@@ -21,7 +21,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Base',
+      title: 'Students',
     },
     children: [
       {
@@ -47,7 +47,7 @@ const routes: Routes = [
         path: 'cards',
         component: CardsComponent,
         data: {
-          title: 'Cards',
+          title: 'List',
         },
       },
       {
