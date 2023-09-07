@@ -8,7 +8,7 @@ import { Page404Component } from './page404/page404.component';
 import { Page500Component } from './page500/page500.component';
 import { ButtonModule, CardModule, FormModule, GridModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
-
+import { NgxSpinnerModule } from 'ngx-spinner'; 
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { IconModule } from '@coreui/icons-angular';
     CommonModule,
     PagesRoutingModule,
     CardModule,
+    NgxSpinnerModule,
     ButtonModule,
     GridModule,
     IconModule,

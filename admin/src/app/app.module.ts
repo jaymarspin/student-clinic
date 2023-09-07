@@ -39,11 +39,11 @@ import {
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { NgxSpinnerModule } from 'ngx-spinner';
-
+import { BadgesComponent } from './views/notifications/badges/badges.component';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
-  DefaultLayoutComponent
+  DefaultLayoutComponent,
 ];
 
 @NgModule({

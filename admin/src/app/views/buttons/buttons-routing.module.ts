@@ -9,7 +9,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Buttons'
+      title: 'Inventory'
     },
     children: [
       {
@@ -21,7 +21,7 @@ const routes: Routes = [
         path: 'buttons',
         component: ButtonsComponent,
         data: {
-          title: 'Buttons'
+          title: 'List'
         }
       },
       {

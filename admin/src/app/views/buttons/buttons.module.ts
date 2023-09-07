@@ -7,8 +7,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { ButtonGroupsComponent } from './button-groups/button-groups.component';
 import { DropdownsComponent } from './dropdowns/dropdowns.component';
 
-import { ButtonsRoutingModule } from './buttons-routing.module';
-
+import { ButtonsRoutingModule } from './buttons-routing.module'; 
 import {
   ButtonGroupModule,
   ButtonModule,
@@ -24,12 +23,14 @@ import {
 } from '@coreui/angular';
 
 import { IconModule } from '@coreui/icons-angular';
+import { AddOrEditMedicineComponent } from './add-or-edit-medicine/add-or-edit-medicine.component';
+import { AddStocksComponent } from './add-stocks/add-stocks.component';
 
 @NgModule({
   declarations: [
     ButtonsComponent,
-    ButtonGroupsComponent,
-    DropdownsComponent,
+    ButtonGroupsComponent, 
+    DropdownsComponent, AddOrEditMedicineComponent, AddStocksComponent,
   ],
   imports: [
     CommonModule,
