@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="alert alert-primary">
+        <span>Add Student</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form>
+        <div [cFormFloating]="true" class="mb-3">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="name@example.com"
+            type="email"
+          />
+          <label cLabel for="floatingInput">Email Address</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="name@example.com"
+            type="email"
+          />
+          <label cLabel for="floatingInput">Full Name</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3">
+          <select
+            aria-label="Default select example"
+            id="floatingInput"
+            cFormControl
+            cSelect
+            [cFormFloating]="true"
+            class="mb-3"
+          >
+            <option>Open this select menu</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+          <label cLabel for="floatingInput">Grade Year</label>
+        </div>
+        <div cFormFloating class="mb-3">
+          <input
+            cFormControl
+            id="floatingPassword"
+            placeholder="Password"
+            type="password"
+            autocomplete="off"
+          />
+          <label cLabel for="floatingPassword">Password</label>
+        </div>
+
+        <div cFormFloating>
+          <label cLabel for="exampleFormControlTextarea1"
+            >Example textarea</label
+          >
+          <textarea
+            style="height: 100px"
+            cFormControl
+            id="exampleFormControlTextarea1"
+          ></textarea>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <button class="btn btn-primary me-1" (click)="add()">Submit</button>
+      <button class="btn btn-danger" (click)="close()">Close</button>
+    </div>
+  </div>
+</div>

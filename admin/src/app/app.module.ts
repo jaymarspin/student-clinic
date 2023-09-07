@@ -13,8 +13,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Import containers
-import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
 
+import { DefaultFooterComponent, DefaultHeaderComponent, DefaultLayoutComponent } from './containers';
+import {MatDialogModule} from '@angular/material/dialog';
 import {
   AvatarModule,
   BadgeModule,
@@ -23,7 +24,7 @@ import {
   ButtonModule,
   CardModule,
   DropdownModule,
-  FooterModule,
+  FooterModule, 
   FormModule,
   GridModule,
   HeaderModule,
@@ -37,6 +38,7 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
@@ -54,6 +56,7 @@ const APP_CONTAINERS = [
     BreadcrumbModule,
     FooterModule,
     DropdownModule,
+    NgxSpinnerModule,
     GridModule,
     HeaderModule,
     SidebarModule,
@@ -67,6 +70,7 @@ const APP_CONTAINERS = [
     SidebarModule,
     SharedModule,
     TabsModule,
+    MatDialogModule,
     ListGroupModule,
     ProgressModule,
     BadgeModule,

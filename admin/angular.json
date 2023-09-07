@@ -37,7 +37,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/scss/styles.scss"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/scss/styles.scss",
+              "node_modules/ngx-spinner/animations/ball-atom.css"
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
@@ -104,7 +106,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/scss/styles.scss"
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/scss/styles.scss",
+              "node_modules/ngx-spinner/animations/ball-atom.css"
             ],
             "scripts": []
           }

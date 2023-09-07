@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import {MatTabsModule} from '@angular/material/tabs';
 // CoreUI Modules
 import {
   AccordionModule,
@@ -23,6 +23,7 @@ import {
   SharedModule,
   SpinnerModule,
   TableModule,
+  
   TabsModule,
   TooltipModule,
   UtilitiesModule
@@ -52,6 +53,8 @@ import { TabsComponent } from './tabs/tabs.component';
 
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
+import { AddStudentComponent } from './add-student/add-student.component';
+import { MedicinesComponent } from './medicines/medicines.component';
 
 @NgModule({
   imports: [
@@ -61,6 +64,7 @@ import { BaseRoutingModule } from './base-routing.module';
     BadgeModule,
     BreadcrumbModule,
     ButtonModule,
+    MatTabsModule,
     CardModule,
     CollapseModule,
     GridModule,
@@ -100,6 +104,8 @@ import { BaseRoutingModule } from './base-routing.module';
     TooltipsComponent,
     TabsComponent,
     PlaceholdersComponent,
+    AddStudentComponent,
+    MedicinesComponent,
   ],
 })
 export class BaseModule {}
