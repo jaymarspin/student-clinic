@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="alert alert-primary">
+        <span>Add User</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form>
+        <div [cFormFloating]="true" class="mb-3">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="name@example.com"
+            type="text"
+          />
+          <label cLabel for="floatingInput">Username</label>
+        </div>
+
+        <div [cFormFloating]="true" class="mb-3">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="name@example.com"
+            type="password"
+          />
+          <label cLabel for="floatingInput">Password</label>
+        </div>
+
+        <div [cFormFloating]="true" class="mb-3">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="name@example.com"
+            type="password"
+          />
+          <label cLabel for="floatingInput">Repeat Password</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3">
+          <input
+            cFormControl
+            id="floatingInput"
+            placeholder="name@example.com"
+            type="email"
+          />
+          <label cLabel for="floatingInput">Full Name</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3">
+          <select
+            aria-label="Default select example"
+            id="floatingInput"
+            cFormControl
+            cSelect
+            [cFormFloating]="true"
+            class="mb-3"
+          >
+            <option>Open this select menu</option>
+            <option value="1">User</option>
+            <option value="2">admin</option>
+            <option value="3">Super admin</option>
+          </select>
+          <label cLabel for="floatingInput">Role</label>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <button class="btn btn-primary me-1" (click)="addUser()">Submit</button>
+      <button class="btn btn-danger" (click)="close()">Close</button>
+    </div>
+  </div>
+</div>

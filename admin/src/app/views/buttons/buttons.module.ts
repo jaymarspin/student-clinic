@@ -24,7 +24,7 @@ import {
 
 import { IconModule } from '@coreui/icons-angular';
 import { AddOrEditMedicineComponent } from './add-or-edit-medicine/add-or-edit-medicine.component';
-import { AddStocksComponent } from './add-stocks/add-stocks.component';
+import { AddStocksComponent } from './add-stocks/add-stocks.component'; 
 
 @NgModule({
   declarations: [

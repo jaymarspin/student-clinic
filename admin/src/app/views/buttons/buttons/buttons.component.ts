@@ -33,7 +33,19 @@ export class ButtonsComponent {
   }
 
   edit(){
-
+    let dialog = this.matdialog.open(AddOrEditMedicineComponent,{width: '60%',height: '50%'});
+    dialog.afterClosed().subscribe(async (res) => {
+      if (res === true) {
+        await Swal.fire({
+          icon: 'success',
+          title: 'Medicines Successfully Updated',
+          showConfirmButton: false,
+          timer: 3500,
+          backdrop: false
+        });
+        
+      }
+    });
   }
   addStocks(){
     let dialog = this.matdialog.open(AddStocksComponent,{width: '60%',height: '50%'});
@@ -41,7 +53,7 @@ export class ButtonsComponent {
       if (res === true) {
         await Swal.fire({
           icon: 'success',
-          title: 'Medicines Successfully added',
+          title: 'Medicines Successfully Updated',
           showConfirmButton: false,
           timer: 3500,
           backdrop: false

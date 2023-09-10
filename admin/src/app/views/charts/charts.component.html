@@ -1,73 +1,55 @@
-
-  <c-row>
-    <c-col xs="12">
-      <app-docs-callout href="charts">
-        Angular wrapper component for Chart.js 3.6, the most popular charting library.
-        <br>
-      </app-docs-callout>
-    </c-col>
-    <c-col xs="12" lg="6">
-      <c-card class="mb-4">
-        <c-card-header>
-          Bar Chart
-        </c-card-header>
-        <c-card-body>
-          <c-chart type="bar" [data]="chartBarData"></c-chart>
-        </c-card-body>
-      </c-card>
-    </c-col>
-    <c-col xs="12" lg="6">
-      <c-card class="mb-4">
-        <c-card-header>
-          Line Chart
-        </c-card-header>
-        <c-card-body>
-          <c-chart type="line" [data]="chartLineData"></c-chart>
-        </c-card-body>
-      </c-card>
-    </c-col>
-  </c-row>
-  <c-row>
-    <c-col xs="12" lg="6">
-      <c-card class="mb-4">
-        <c-card-header>
-          Doughnut Chart
-        </c-card-header>
-        <c-card-body>
-          <c-chart type="doughnut" [data]="chartDoughnutData"></c-chart>
-        </c-card-body>
-      </c-card>
-    </c-col>
-    <c-col xs="12" lg="6">
-      <c-card class="mb-4">
-        <c-card-header>
-          Pie Chart
-        </c-card-header>
-        <c-card-body>
-          <c-chart type="pie" [data]="chartPieData"></c-chart>
-        </c-card-body>
-      </c-card>
-    </c-col>
-  </c-row>
-  <c-row>
-    <c-col xs="12" lg="6">
-      <c-card class="mb-4">
-        <c-card-header>
-          Polar Area Chart
-        </c-card-header>
-        <c-card-body>
-          <c-chart type="polarArea" [data]="chartPolarAreaData"></c-chart>
-        </c-card-body>
-      </c-card>
-    </c-col>
-    <c-col xs="12" lg="6">
-      <c-card class="mb-4">
-        <c-card-header>
-          Radar Chart
-        </c-card-header>
-        <c-card-body>
-          <c-chart type="radar" [data]="chartRadarData"></c-chart>
-        </c-card-body>
-      </c-card>
-    </c-col>
-  </c-row>
+<div class="row">
+  <div class="col-12">
+    <button class="btn btn-primary" (click)="addUser()">Add User</button>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-12">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Full Name</th>
+          <th scope="col">Username</th>
+          <th scope="col">Role</th>
+          <th scope="col">Date Added</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Denrey Latuab</td>
+          <td>User123</td>
+          <td>Super Admin</td>
+          <td>September 8 2023</td>
+          <td>
+            <button class="btn btn-secondary" (click)="editUser()">Edit</button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>Denrey Latuab</td>
+          <td>User123</td>
+          <td>Admin</td>
+          <td>September 8 2023</td>
+          <td>
+            <button class="btn btn-secondary" (click)="editUser()">Edit</button>
+          </td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>Denrey Latuab</td>
+          <td>User123</td>
+          <td>User</td>
+          <td>September 8 2023</td>
+          <td>
+            <button class="btn btn-secondary" (click)="editUser()">Edit</button>
+          </td>
+        </tr>
+        <tr></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
