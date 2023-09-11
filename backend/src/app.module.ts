@@ -9,10 +9,10 @@ import { AccountsModule } from './accounts/accounts.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'raisemax.cmlqfygo9gs6.us-west-1.rds.amazonaws.com',
+      host: '127.0.0.1',
       port: 3306,
-      username: 'admin',
-      password: '123raisemax',
+      username: 'root',
+      password: '',
       database: 'pos',
       synchronize: true,
       autoLoadEntities: true,

@@ -17,7 +17,7 @@ export class ButtonsComponent {
   constructor(public matdialog: MatDialog) { }
 
   async addMedicine() {
-    let dialog = this.matdialog.open(AddOrEditMedicineComponent,{width: '60%',height: '50%'});
+    let dialog = this.matdialog.open(AddOrEditMedicineComponent,{width: '60%',height: '70%'});
     dialog.afterClosed().subscribe(async (res) => {
       if (res === true) {
         await Swal.fire({
@@ -33,7 +33,7 @@ export class ButtonsComponent {
   }
 
   edit(){
-    let dialog = this.matdialog.open(AddOrEditMedicineComponent,{width: '60%',height: '50%'});
+    let dialog = this.matdialog.open(AddOrEditMedicineComponent,{width: '60%',height: '70%'});
     dialog.afterClosed().subscribe(async (res) => {
       if (res === true) {
         await Swal.fire({
@@ -48,7 +48,7 @@ export class ButtonsComponent {
     });
   }
   addStocks(){
-    let dialog = this.matdialog.open(AddStocksComponent,{width: '60%',height: '50%'});
+    let dialog = this.matdialog.open(AddStocksComponent,{width: '60%',height: '70%'});
     dialog.afterClosed().subscribe(async (res) => {
       if (res === true) {
         await Swal.fire({

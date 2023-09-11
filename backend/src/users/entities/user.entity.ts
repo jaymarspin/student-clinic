@@ -17,6 +17,18 @@ export class UserEntity {
     nullable: false,
   })
   password: string;
+
+  @Column({
+    type: 'varchar',
+    nullable: false,
+  })
+  fullname: string;
+
+  @Column({
+    type: 'varchar',
+    nullable: false,
+  })
+  role: string;
  
   @Column({ default: true })
   isActive: boolean;
@@ -24,7 +36,7 @@ export class UserEntity {
   @Column({
     unique: true,
   })
-  email: string;
+  username: string;
 
   @Column({ type: 'json',nullable: true })
   extra: any;

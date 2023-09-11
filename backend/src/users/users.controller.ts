@@ -9,24 +9,20 @@ export class UsersController {
 
   @Post()
   async create(
-    @Body('fname') firstName: string,
-    @Body('lname') lastName: string,
-    @Body('email') email: string,
-    @Body('bdate') bdate: string,
-    
+    @Body('fullname') fullname: string,
+    @Body('username') username: string,
+    @Body('role') role: string,
     @Body('password') password: string,
   ) {
-    const user = this.usersService.getUserByEmail(email);
-    console.log(user);
+
     const saltOrRounds = 10;
     
     const hash = await bcrypt.hash(password, saltOrRounds);
     return this.usersService.create({
-      firstName,
-      lastName,
-      email,
+      fullname,
+      username,
       password: hash,
-      bdate,
+      role,
     });
   }
   @UseGuards(JwtAuthGuard)
