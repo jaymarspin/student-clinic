@@ -8,13 +8,13 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <form>
+     
         <div [cFormFloating]="true" class="mb-3">
           <input
             cFormControl
-            id="floatingInput"
-            placeholder="name@example.com"
+            id="floatingInput" 
             type="text"
+            [(ngModel)]="username"
           />
           <label cLabel for="floatingInput">Username</label>
         </div>
@@ -22,9 +22,9 @@
         <div [cFormFloating]="true" class="mb-3">
           <input
             cFormControl
-            id="floatingInput"
-            placeholder="name@example.com"
+            id="floatingInput" 
             type="password"
+            [(ngModel)]="password"
           />
           <label cLabel for="floatingInput">Password</label>
         </div>
@@ -32,17 +32,17 @@
         <div [cFormFloating]="true" class="mb-3">
           <input
             cFormControl
-            id="floatingInput"
-            placeholder="name@example.com"
+            [(ngModel)]="rpassword"
+            id="floatingInput" 
             type="password"
           />
           <label cLabel for="floatingInput">Repeat Password</label>
         </div>
         <div [cFormFloating]="true" class="mb-3">
           <input
+          [(ngModel)]="fullname"
             cFormControl
-            id="floatingInput"
-            placeholder="name@example.com"
+            id="floatingInput" 
             type="email"
           />
           <label cLabel for="floatingInput">Full Name</label>
@@ -55,15 +55,16 @@
             cSelect
             [cFormFloating]="true"
             class="mb-3"
+            [(ngModel)]="role"
           >
             <option>Open this select menu</option>
-            <option value="1">User</option>
-            <option value="2">admin</option>
-            <option value="3">Super admin</option>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+            <option value="super admin">Super admin</option>
           </select>
           <label cLabel for="floatingInput">Role</label>
         </div>
-      </form>
+      
     </div>
   </div>
   <div class="row mt-3">

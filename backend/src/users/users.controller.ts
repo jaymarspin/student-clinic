@@ -12,6 +12,7 @@ export class UsersController {
     @Body('fullname') fullname: string,
     @Body('username') username: string,
     @Body('role') role: string,
+    @Body('bdate') bdate: string,
     @Body('password') password: string,
   ) {
 
@@ -21,11 +22,12 @@ export class UsersController {
     return this.usersService.create({
       fullname,
       username,
+      bdate,
       password: hash,
       role,
     });
   }
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.usersService.findAll();

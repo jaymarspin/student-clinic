@@ -25,6 +25,12 @@ export class UserEntity {
   fullname: string;
 
   @Column({
+    type: 'date',
+    nullable: false,
+  })
+  bdate: any;
+
+  @Column({
     type: 'varchar',
     nullable: false,
   })

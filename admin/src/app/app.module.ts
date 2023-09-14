@@ -40,6 +40,7 @@ import {
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { BadgesComponent } from './views/notifications/badges/badges.component';
+import { HttpClientModule,HttpClient } from '@angular/common/http'; 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -57,6 +58,7 @@ const APP_CONTAINERS = [
     FooterModule,
     DropdownModule,
     NgxSpinnerModule,
+    HttpClientModule,
     GridModule,
     HeaderModule,
     SidebarModule,
@@ -84,7 +86,8 @@ const APP_CONTAINERS = [
       useClass: HashLocationStrategy
     },
     IconSetService,
-    Title
+    Title,
+    HttpClient
   ],
   bootstrap: [AppComponent]
 })

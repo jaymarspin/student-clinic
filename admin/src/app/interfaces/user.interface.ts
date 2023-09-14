@@ -4,6 +4,7 @@ export interface User {
     role: string;
     password: string;
     active?: boolean;
+    created_at?: string;
    
   }
   

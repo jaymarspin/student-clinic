@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import {User, UserToken} from '../../interfaces/user.interface'
+import { User, UserToken } from '../../interfaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
-  server = '127.0.0.1';
+  server = 'http://127.0.0.1:3005/';
   user: any;
   constructor(private http: HttpClient) {}
 
@@ -29,5 +29,16 @@ export class UsersService {
       }),
     };
     return this.http.get(`${this.server}users/${id}`, httpOptions);
+  }
+
+  getUsers(token?: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http
+      .get(`${this.server}users`)
+      .pipe(map((response) => response as User[]));
   }
 }
