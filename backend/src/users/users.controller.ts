@@ -1,7 +1,15 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { JwtAuthGuard } from 'src/utils/guards/jwt-guard.guard';
 import * as bcrypt from 'bcrypt';
 @Controller('users')
 export class UsersController {
@@ -15,9 +23,8 @@ export class UsersController {
     @Body('bdate') bdate: string,
     @Body('password') password: string,
   ) {
-
     const saltOrRounds = 10;
-    
+
     const hash = await bcrypt.hash(password, saltOrRounds);
     return this.usersService.create({
       fullname,

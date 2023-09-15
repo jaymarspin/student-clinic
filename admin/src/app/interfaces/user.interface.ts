@@ -16,5 +16,6 @@ export interface User {
   export interface UserToken {
     token: string;
     id: string;
+    user: any
   }
   

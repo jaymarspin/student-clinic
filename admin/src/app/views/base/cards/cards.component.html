@@ -11,28 +11,18 @@
           <th scope="col">#</th>
           <th scope="col">Full Name</th>
           <th scope="col">Email</th>
-          <th scope="col">Description of the Incident</th>
-          <th scope="col">Date Added</th>
-          <th scope="col">Action Taken</th>
+          <th scope="col">Date Added</th> 
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr *ngFor="let student of students;index as i">
           <th scope="row">1</th>
-          <td>Denrey Latuab</td>
-          <td>Mark@jay.com</td> 
-          <td>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
-          </td>
-          <td>September 8 2023</td>
-          <td>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
-          </td>
+          <td>{{student.fullname}}</td>
+          <td>{{student.email}}</td> 
+         
+          <td>{{student.created_at | momentjs}}</td>
+          
 
           <td>
             <button class="btn btn-secondary" (click)="viewMedicines()">
@@ -40,49 +30,7 @@
             </button>
           </td>
         </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Denrey Latuab</td>
-          <td>Mark@jay.com</td>
-
-          <td>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
-          </td>
-          <td>September 8 2023</td>
-          <td>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
-          </td>
-          <td>
-            <button class="btn btn-secondary" (click)="viewMedicines()">
-              Medicines
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Denrey Latuab</td>
-          <td>Mark@jay.com</td>
-          <td>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
-          </td>
-          <td>September 8 2023</td>
-          <td>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s
-          </td>
-          <td>
-            <button class="btn btn-secondary" (click)="viewMedicines()">
-              Medicines
-            </button>
-          </td>
-        </tr>
+        
       </tbody>
     </table>
   </div>

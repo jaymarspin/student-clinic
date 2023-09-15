@@ -2,43 +2,33 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { User, UserLogin, UserToken } from '../../interfaces/user.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Student } from 'src/app/interfaces/student.interface';
 @Injectable({
   providedIn: 'root',
 })
-export class UsersService {
+export class StudentService {
   server = 'http://127.0.0.1:3005/';
   user: any;
   constructor(private http: HttpClient) {}
 
-  public register(data: User) {
-    return this.http
-      .post(`${this.server}users`, data)
-      .pipe(map((response) => response as User));
-  }
-
-  public login(data: UserLogin) {
-    return this.http
-      .post(`${this.server}auth/local/signin`, data)
-      .pipe(map((response) => response as UserToken));
-  }
-
-  getUser(id: any, token: any) {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        authorization: `Bearer ${token}`,
-      }),
-    };
-    return this.http.get(`${this.server}users/${id}`, httpOptions);
-  }
-
-  getUsers(token?: string) {
+  public addStudent(data: Student, token: string) {
     const httpOptions = {
       headers: new HttpHeaders({
         authorization: `Bearer ${token}`,
       }),
     };
     return this.http
-      .get(`${this.server}users`)
-      .pipe(map((response) => response as User[]));
+      .post(`${this.server}students`, data, httpOptions)
+      .pipe(map((response) => response as Student));
+  }
+  getStudents(token: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http
+      .get(`${this.server}students`, httpOptions)
+      .pipe(map((response) => response as Student[]));
   }
 }

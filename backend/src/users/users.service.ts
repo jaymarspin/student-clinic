@@ -19,6 +19,10 @@ export class UsersService {
     return this.user.find();
   }
 
+  public async getUserByUsername(username: string): Promise<UserEntity | undefined> {
+    return this.user.findOneBy({ username: username})
+  }
+
   findOne(id: string): Promise<UserEntity> {
     return null
   }

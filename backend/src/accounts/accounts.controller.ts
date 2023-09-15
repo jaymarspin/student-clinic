@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { AccountsService } from './accounts.service';
 import { UpdateAccountDto } from './dto/update-account.dto';
 import * as bcrypt from 'bcrypt';
@@ -7,30 +15,32 @@ import * as bcrypt from 'bcrypt';
 export class AccountsController {
   constructor(private readonly accountsService: AccountsService) {}
 
-  @Post ()
-  async create (
+  @Post()
+  async create(
     @Body('username') username: string,
     @Body('password') password: string,
     @Body('fisrtname') firstname: string,
     @Body('lastname') lastname: string,
-    @Body('extra') extra: any
-  ){
+    @Body('extra') extra: any,
+  ) {
     const salOrRounds = 10;
-   
-
-    const hash =await bcrypt.hash(password,salOrRounds);
+    const hash = await bcrypt.hash(password, salOrRounds);
     return this.accountsService.create({
-      username,password: hash,firstname,lastname,extra: extra
+      username,
+      password: hash,
+      firstname,
+      lastname,
+      extra: extra,
     });
   }
-  @Get ()
+  @Get()
   findALL() {
     return this.accountsService.findALL();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.accountsService.findOne(+id)
+    return this.accountsService.findOne(+id);
   }
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAccountDto: UpdateAccountDto) {

@@ -8,13 +8,14 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <form>
+       
         <div [cFormFloating]="true" class="mb-3">
           <input
             cFormControl
             id="floatingInput"
             placeholder="name@example.com"
             type="email"
+            [(ngModel)]="student.email"
           />
           <label cLabel for="floatingInput">Email Address</label>
         </div>
@@ -24,11 +25,13 @@
             id="floatingInput"
             placeholder="name@example.com"
             type="email"
+            [(ngModel)]="student.fullname"
           />
           <label cLabel for="floatingInput">Full Name</label>
         </div>
         <div [cFormFloating]="true" class="mb-3">
           <select
+            [(ngModel)]="student.grade"
             aria-label="Default select example"
             id="floatingInput"
             cFormControl
@@ -43,28 +46,17 @@
           </select>
           <label cLabel for="floatingInput">Grade Year</label>
         </div>
-        <div cFormFloating class="mb-3">
-          <input
-            cFormControl
-            id="floatingPassword"
-            placeholder="Password"
-            type="password"
-            autocomplete="off"
-          />
-          <label cLabel for="floatingPassword">Password</label>
-        </div>
 
         <div cFormFloating>
-          <label cLabel for="exampleFormControlTextarea1"
-            >Example textarea</label
-          >
+          <label cLabel for="exampleFormControlTextarea1">Notes</label>
           <textarea
+            [(ngModel)]="student.notes"
             style="height: 100px"
             cFormControl
             id="exampleFormControlTextarea1"
           ></textarea>
         </div>
-      </form>
+ 
     </div>
   </div>
   <div class="row mt-3">

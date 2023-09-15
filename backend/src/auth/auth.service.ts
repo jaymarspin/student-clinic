@@ -3,9 +3,10 @@ import { JwtService } from '@nestjs/jwt';
 import { AuthDto } from './dto';
 import * as bcrypt from 'bcrypt';
 import { AccountsService } from 'src/accounts/accounts.service';
+import { UsersService } from 'src/users/users.service';
 @Injectable()
 export class AuthService {
-  constructor(private jwtService: JwtService, private account: AccountsService) { }
+  constructor(private jwtService: JwtService, private account: UsersService) { }
 
   async signinLocal(dto: AuthDto) {
     let response;

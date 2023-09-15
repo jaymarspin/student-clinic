@@ -38,9 +38,9 @@ import {
 } from '@coreui/angular';
 
 import { IconModule, IconSetService } from '@coreui/icons-angular';
-import { NgxSpinnerModule } from 'ngx-spinner';
-import { BadgesComponent } from './views/notifications/badges/badges.component';
+import { NgxSpinnerModule } from 'ngx-spinner'; 
 import { HttpClientModule,HttpClient } from '@angular/common/http'; 
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,
@@ -85,6 +85,8 @@ const APP_CONTAINERS = [
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
+    JwtHelperService,
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
     IconSetService,
     Title,
     HttpClient

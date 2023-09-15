@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTabsModule} from '@angular/material/tabs';
 // CoreUI Modules
 import {
@@ -23,7 +23,6 @@ import {
   SharedModule,
   SpinnerModule,
   TableModule,
-  
   TabsModule,
   TooltipModule,
   UtilitiesModule
@@ -55,7 +54,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { BaseRoutingModule } from './base-routing.module';
 import { AddStudentComponent } from './add-student/add-student.component';
 import { MedicinesComponent } from './medicines/medicines.component';
-
+import { MomentjsPipe } from 'src/app/pipes/momentjs/momentjs.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -83,6 +82,7 @@ import { MedicinesComponent } from './medicines/medicines.component';
     FormModule,
     ReactiveFormsModule,
     DropdownModule,
+    FormsModule,
     PaginationModule,
     PopoverModule,
     TableModule,
@@ -106,6 +106,7 @@ import { MedicinesComponent } from './medicines/medicines.component';
     PlaceholdersComponent,
     AddStudentComponent,
     MedicinesComponent,
+    MomentjsPipe
   ],
 })
 export class BaseModule {}
