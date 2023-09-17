@@ -30,7 +30,7 @@ export class AddOrEditMedicineComponent {
   
     getDosageIndex(i:number){
       this.indexRetained = i
-      alert(i)
+      // alert(i)
     }
   addDosage(){
     let dosage = _.find(this.inventories.dosage, {dosage: this.dosage});
