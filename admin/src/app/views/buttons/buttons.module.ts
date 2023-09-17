@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DocsComponentsModule } from '@docs-components/docs-components.module';
 import { ButtonsComponent } from './buttons/buttons.component';
@@ -44,6 +44,7 @@ import { AddStocksComponent } from './add-stocks/add-stocks.component';
     DropdownModule,
     SharedModule,
     FormModule,
+    FormsModule,
     ReactiveFormsModule,
     DocsComponentsModule,
     NavbarModule,

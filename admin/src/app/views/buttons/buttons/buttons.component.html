@@ -18,10 +18,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
+        <tr *ngFor="let inventory of inventories;index as i">
+          <th scope="row">{{(i + 1)}}</th>
 
-          <td>Paracetamol</td>
+          <td>{{inventory.medicinename}}</td>
 
           <td>
             <span class="badge badge-primary me-1">25mg/200</span>

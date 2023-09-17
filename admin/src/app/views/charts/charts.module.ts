@@ -9,8 +9,8 @@ import { DocsComponentsModule } from '@docs-components/docs-components.module';
 import { AddOrEditUserComponent } from './add-or-edit-user/add-or-edit-user.component';
 import { FormModule } from '@coreui/angular';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule,HttpClient } from '@angular/common/http';
-import { MomentjsPipe } from 'src/app/pipes/momentjs/momentjs.pipe';
+import { HttpClientModule,HttpClient } from '@angular/common/http'; 
+import {MomentjsPipe} from '../../pipes/momentjs/momentjs.pipe'
 @NgModule({
   declarations: [ChartsComponent, AddOrEditUserComponent,MomentjsPipe],
   imports: [
@@ -21,7 +21,7 @@ import { MomentjsPipe } from 'src/app/pipes/momentjs/momentjs.pipe';
     GridModule,
     HttpClientModule,
     FormModule,
-    FormsModule,
+    FormsModule, 
     BadgeModule,
     DocsComponentsModule,
   ],providers:[HttpClient]

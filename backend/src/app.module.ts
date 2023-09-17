@@ -6,6 +6,9 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { AccountsModule } from './accounts/accounts.module';
 import { StudentsModule } from './students/students.module';
+import { InventoriesModule } from './inventories/inventories.module';
+import { DosagesModule } from './dosages/dosages.module';
+import { StocksModule } from './stocks/stocks.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -24,6 +27,9 @@ import { StudentsModule } from './students/students.module';
     UsersModule,
     AccountsModule,
     StudentsModule,
+    InventoriesModule,
+    DosagesModule,
+    StocksModule,
   ],
   controllers: [AppController],
   providers: [AppService],

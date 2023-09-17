@@ -11,26 +11,22 @@
           <th scope="col">#</th>
           <th scope="col">Full Name</th>
           <th scope="col">Email</th>
-          <th scope="col">Date Added</th> 
+          <th scope="col">Date Added</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let student of students;index as i">
+        <tr *ngFor="let student of students; index as i">
           <th scope="row">1</th>
-          <td>{{student.fullname}}</td>
-          <td>{{student.email}}</td> 
-         
-          <td>{{student.created_at | momentjs}}</td>
-          
-
+          <td>{{ student.fullname }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.created_at | momentjs2 }}</td>
           <td>
             <button class="btn btn-secondary" (click)="viewMedicines()">
               Medicines
             </button>
           </td>
         </tr>
-        
       </tbody>
     </table>
   </div>

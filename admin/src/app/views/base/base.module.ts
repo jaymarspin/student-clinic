@@ -53,8 +53,9 @@ import { TabsComponent } from './tabs/tabs.component';
 // Components Routing
 import { BaseRoutingModule } from './base-routing.module';
 import { AddStudentComponent } from './add-student/add-student.component';
-import { MedicinesComponent } from './medicines/medicines.component';
-import { MomentjsPipe } from 'src/app/pipes/momentjs/momentjs.pipe';
+import { MedicinesComponent } from './medicines/medicines.component'; 
+import {MymodulesModule} from '../../modules/mymodules/mymodules.module'
+import {Momentjs2Pipe} from '../../pipes/momentjs2.pipe'
 @NgModule({
   imports: [
     CommonModule,
@@ -77,6 +78,7 @@ import { MomentjsPipe } from 'src/app/pipes/momentjs/momentjs.pipe';
     SpinnerModule,
     TabsModule,
     NavModule,
+    MymodulesModule,
     TooltipModule,
     CarouselModule,
     FormModule,
@@ -86,7 +88,7 @@ import { MomentjsPipe } from 'src/app/pipes/momentjs/momentjs.pipe';
     PaginationModule,
     PopoverModule,
     TableModule,
-    DocsComponentsModule,
+    DocsComponentsModule, 
   ],
   declarations: [
     AccordionsComponent,
@@ -99,14 +101,14 @@ import { MomentjsPipe } from 'src/app/pipes/momentjs/momentjs.pipe';
     PaginationsComponent,
     PopoversComponent,
     ProgressComponent,
+    Momentjs2Pipe,
     SpinnersComponent,
     TablesComponent,
     TooltipsComponent,
     TabsComponent,
     PlaceholdersComponent,
     AddStudentComponent,
-    MedicinesComponent,
-    MomentjsPipe
+    MedicinesComponent, 
   ],
 })
 export class BaseModule {}

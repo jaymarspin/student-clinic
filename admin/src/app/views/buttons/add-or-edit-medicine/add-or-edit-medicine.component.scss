@@ -2,4 +2,9 @@
     background-color: aqua;
     color: #333;
     font-size: 16px;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.8;
+        transition: .8s all;
+    }
 }
