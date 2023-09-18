@@ -20,13 +20,9 @@
       <tbody>
         <tr *ngFor="let inventory of inventories;index as i">
           <th scope="row">{{(i + 1)}}</th>
-
           <td>{{inventory.medicinename}}</td>
-
           <td>
-            <span class="badge badge-primary me-1">25mg/200</span>
-            <span class="badge badge-primary me-1">50mg/300</span>
-            <span class="badge badge-primary me-1">100mg/500</span>
+            <span class="badge badge-primary me-1" *ngFor="let dosage of inventory.dosage;index as dosageIndex">{{dosage.dosage}}/{{dosage?.stocks | stocks}}</span>
           </td>
           <td>
             <button class="btn btn-secondary me-1" (click)="edit()">

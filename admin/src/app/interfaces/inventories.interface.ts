@@ -17,6 +17,7 @@ export interface Inventories {
 
   export interface Dosage {
     dosage: string;
+    stocks?: Stocks | any;
     created_at?: string;
     updated_at?: string;
   }

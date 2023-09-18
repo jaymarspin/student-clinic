@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateInventoryDto } from './dto/create-inventory.dto';
 import { UpdateInventoryDto } from './dto/update-inventory.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -7,19 +6,17 @@ import { InventoriesEntity } from './entities/inventory.entity';
 
 @Injectable()
 export class InventoriesService {
-
   constructor(
     @InjectRepository(InventoriesEntity)
     private readonly inventories: Repository<InventoriesEntity>,
   ) {}
 
-  
   create(data) {
-    return this.inventories.save(data)
+    return this.inventories.save(data);
   }
 
   findAll() {
-    return this.inventories.find({relations:['dosage']});
+    return this.inventories.find({ relations: ['dosage', 'dosage.stocks'] });
   }
 
   findOne(id: number) {
