@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner'; 
 import { Student } from '../../../interfaces/student.interface';
 import { StudentService } from '../../../services/student/student.service';
@@ -19,9 +19,10 @@ export class AddStudentComponent {
   };
   constructor(
     private spinner: NgxSpinnerService,
-    private dialogRef: MatDialogRef<AddStudentComponent>,
+    private dialogRef: MatDialogRef<AddStudentComponent>, 
     public studentService: StudentService,
-    private auth: AuthService
+    private auth: AuthService,
+    public matdialog: MatDialog,
   ) {}
 
   async add() {
@@ -35,6 +36,7 @@ export class AddStudentComponent {
         this.dialogRef.close(false)
       });
   }
+ 
   close() {
     this.dialogRef.close();
   }

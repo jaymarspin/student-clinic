@@ -76,10 +76,11 @@ export class CardsComponent implements OnInit{
     })
   }
 
-  viewMedicines() {
+  viewMedicines(student: Student) {
     let dialog = this.matdialog.open(MedicinesComponent, {
       width: '60%',
       height: '60%',
+      data: student
     });
     dialog.afterClosed().subscribe(async (res) => {
       if (res === true) {

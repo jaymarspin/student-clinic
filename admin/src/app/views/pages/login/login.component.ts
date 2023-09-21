@@ -27,6 +27,7 @@ export class LoginComponent {
     await this.spinner.show();
     this.usersService.login(this.userLogin).subscribe({
       next: async (res) => {
+        this.spinner.hide();
         if (!res.id) {
           Object.entries(res).map(async ([key, value]) => {
             await Swal.fire({
@@ -36,10 +37,8 @@ export class LoginComponent {
               timer: 1500,
               backdrop: false,
             });
-            this.spinner.hide();
           });
         } else {
-          this.spinner.hide();
           await this.setter(res);
           await this.router.navigate(['']);
         }

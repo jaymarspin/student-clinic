@@ -9,9 +9,9 @@ import {
     UpdateDateColumn,
   } from 'typeorm';
   
-  @Entity('students')
-  export class StudentsEntity {
-    @PrimaryGeneratedColumn('increment') id: string;
+  @Entity('student')
+  export class StudentEntity {
+    @PrimaryGeneratedColumn('increment') id: number;
     @Column({
       type: 'varchar',
       nullable: false,

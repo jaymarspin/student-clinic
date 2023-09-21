@@ -22,7 +22,7 @@
           <td>{{ student.email }}</td>
           <td>{{ student.created_at | momentjs2 }}</td>
           <td>
-            <button class="btn btn-secondary" (click)="viewMedicines()">
+            <button class="btn btn-secondary" (click)="viewMedicines(student)">
               Medicines
             </button>
           </td>

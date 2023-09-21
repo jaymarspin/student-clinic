@@ -6,6 +6,7 @@ export interface Student {
     active?: boolean;
     created_at?: string;
     updated_at?: string;
+    id?: number
    
   }
   

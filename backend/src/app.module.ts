@@ -9,6 +9,7 @@ import { StudentsModule } from './students/students.module';
 import { InventoriesModule } from './inventories/inventories.module';
 import { DosagesModule } from './dosages/dosages.module';
 import { StocksModule } from './stocks/stocks.module';
+import { MedicineTakenModule } from './medicine-taken/medicine-taken.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -30,6 +31,7 @@ import { StocksModule } from './stocks/stocks.module';
     InventoriesModule,
     DosagesModule,
     StocksModule,
+    MedicineTakenModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -3,14 +3,14 @@ import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { StudentsEntity } from './entities/student.entity';
+import { StudentEntity } from './entities/student.entity';
 
 @Injectable()
 export class StudentsService {
 
   constructor(
-    @InjectRepository(StudentsEntity)
-    private readonly students: Repository<StudentsEntity>,
+    @InjectRepository(StudentEntity)
+    private readonly students: Repository<StudentEntity>,
   ) {}
   create(data) {
     return this.students.save(data);

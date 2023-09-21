@@ -56,6 +56,8 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { MedicinesComponent } from './medicines/medicines.component'; 
 import {MymodulesModule} from '../../modules/mymodules/mymodules.module'
 import {Momentjs2Pipe} from '../../pipes/momentjs2.pipe'
+import { Stocks2Pipe } from 'src/app/pipes/stocks2/stocks2.pipe';
+import { AddMedicinesComponent } from './medicines/add-medicines/add-medicines/add-medicines.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -104,11 +106,13 @@ import {Momentjs2Pipe} from '../../pipes/momentjs2.pipe'
     Momentjs2Pipe,
     SpinnersComponent,
     TablesComponent,
+    Stocks2Pipe,
     TooltipsComponent,
     TabsComponent,
     PlaceholdersComponent,
     AddStudentComponent,
-    MedicinesComponent, 
+    MedicinesComponent,
+    AddMedicinesComponent, 
   ],
 })
 export class BaseModule {}

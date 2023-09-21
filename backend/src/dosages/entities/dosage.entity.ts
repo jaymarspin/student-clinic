@@ -12,7 +12,7 @@ import {
   
   @Entity('dosage')
   export class DosageEntity {
-    @PrimaryGeneratedColumn('increment') id: string;
+    @PrimaryGeneratedColumn('increment') id: number;
     @Column({
       type: 'varchar',
       nullable: false,
