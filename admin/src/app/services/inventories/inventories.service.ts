@@ -8,7 +8,7 @@ import { deleteReponse } from 'src/app/interfaces/deleteresponse.interface';
   providedIn: 'root'
 })
 export class InventoriesService {
-  server = 'http://127.0.0.1:3005/';
+  server = 'http://13.57.226.6:3005/';
   user: any;
   constructor(private http: HttpClient) {}
   
