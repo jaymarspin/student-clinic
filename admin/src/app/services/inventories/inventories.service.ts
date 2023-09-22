@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Inventories, medicineData } from 'src/app/interfaces/inventories.interface';
+import { Inventories, Stocks, medicineData } from 'src/app/interfaces/inventories.interface';
 import { Student } from 'src/app/interfaces/student.interface';
+import { deleteReponse } from 'src/app/interfaces/deleteresponse.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,6 +33,30 @@ export class InventoriesService {
       .post(`${this.server}medicine-taken`, data, httpOptions)
       .pipe(map((response) => response as medicineData));
   }
+  
+
+  public addStocks(data: any, token: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http
+      .post(`${this.server}stocks`, data, httpOptions)
+      .pipe(map((response) => response as Stocks));
+  }
+
+  public deleteInventory(inventories: Inventories, token: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http
+      .delete(`${this.server}inventories/${inventories.id}`, httpOptions)
+      .pipe(map((response) => response as deleteReponse));
+  }
+
 
   public getByStudent(Student: Student, token: string) {
     const httpOptions = {

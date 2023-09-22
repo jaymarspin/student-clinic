@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { InventoriesService } from './inventories.service';
 import { UpdateInventoryDto } from './dto/update-inventory.dto';
@@ -14,6 +15,7 @@ import { InventoriesEntity } from './entities/inventory.entity';
 import { DosageEntity } from 'src/dosages/entities/dosage.entity';
 import { StocksService } from 'src/stocks/stocks.service';
 import { StocksEntity } from 'src/stocks/entities/stock.entity';
+import { JwtAuthGuard } from 'src/utils/guards/jwt-guard.guard';
 
 @Controller('inventories')
 export class InventoriesController {
@@ -22,7 +24,7 @@ export class InventoriesController {
     private dosagesService: DosagesService,
     private stocksService: StocksService
   ) {}
-
+  @UseGuards(JwtAuthGuard)
   @Post()
   async create(
     @Body('medicinename') medicinename: string,
@@ -56,7 +58,7 @@ export class InventoriesController {
       return inventory;
     }
   }
-
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.inventoriesService.findAll();
@@ -74,7 +76,7 @@ export class InventoriesController {
   ) {
     return this.inventoriesService.update(+id, updateInventoryDto);
   }
-
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.inventoriesService.remove(+id);

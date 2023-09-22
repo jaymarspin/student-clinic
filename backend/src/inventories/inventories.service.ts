@@ -28,6 +28,6 @@ export class InventoriesService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} inventory`;
+    return this.inventories.delete({id});
   }
 }

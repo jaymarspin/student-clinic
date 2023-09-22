@@ -14,7 +14,7 @@
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Medicines/Quantity</th>
+                <th scope="col">Medicines/(dosage/Quantity)</th>
                 <th scope="col">Date</th>
                 <th scope="col">Description of the Incident</th>
                 <th scope="col">Action Taken</th>
@@ -25,7 +25,7 @@
                 <th scope="row">{{ i + 1 }}</th>
                 <td>
                   {{ medicine.inventories?.medicinename }}
-                  {{ medicine.dosage?.dosage }}/{{ medicine.quantity }}
+                  ({{ medicine.dosage?.dosage }}/{{ medicine.quantity }})
                 </td>
                 <td>{{ medicine.date | dateTime }}</td>
                 <td>
@@ -64,6 +64,7 @@
                 </td>
                 <td>
                   <button
+                  *ngIf="userToken.role !== 'user'"
                     class="btn btn-secondary"
                     (click)="addMedicine(inventory)"
                   >

@@ -10,8 +10,8 @@ export class StocksService {
     @InjectRepository(StocksEntity)
     private readonly stocks: Repository<StocksEntity>,
   ) {}
-  create(data:StocksEntity) {
-    return this.stocks.save(data);
+  create(stocks:StocksEntity) {
+    return this.stocks.save(stocks);
   }
 
   findAll() {

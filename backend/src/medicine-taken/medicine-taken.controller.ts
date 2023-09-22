@@ -6,18 +6,19 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
-import { MedicineTakenService } from './medicine-taken.service';
-import { CreateMedicineTakenDto } from './dto/create-medicine-taken.dto';
+import { MedicineTakenService } from './medicine-taken.service'; 
 import { UpdateMedicineTakenDto } from './dto/update-medicine-taken.dto';
 import { StudentEntity } from 'src/students/entities/student.entity';
 import { DosageEntity } from 'src/dosages/entities/dosage.entity';
 import { InventoriesEntity } from 'src/inventories/entities/inventory.entity';
+import { JwtAuthGuard } from 'src/utils/guards/jwt-guard.guard';
 
 @Controller('medicine-taken')
 export class MedicineTakenController {
   constructor(private readonly medicineTakenService: MedicineTakenService) {}
-
+  @UseGuards(JwtAuthGuard)
   @Post()
   create(
     @Body('description') description: string,
@@ -53,12 +54,12 @@ export class MedicineTakenController {
   findAll() {
     return this.medicineTakenService.findAll();
   }
-
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.medicineTakenService.findOne(id);
   }
-
+  @UseGuards(JwtAuthGuard)
   @Get('student/:id')
   findByStudent(@Param('id') id: number) {
     return this.medicineTakenService.findByStudent(id);
@@ -71,7 +72,7 @@ export class MedicineTakenController {
   ) {
     return this.medicineTakenService.update(+id, updateMedicineTakenDto);
   }
-
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.medicineTakenService.remove(+id);

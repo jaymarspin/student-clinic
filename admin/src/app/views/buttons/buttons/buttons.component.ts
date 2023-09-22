@@ -15,13 +15,13 @@ import { Inventories } from 'src/app/interfaces/inventories.interface';
   styleUrls: ['./buttons.component.scss'],
 })
 export class ButtonsComponent implements OnInit {
-  userToken: UserToken ={
+  userToken: UserToken = {
     token: '',
     id: 0,
     user: '',
     role: '',
-  }
-  inventories:Inventories[] = new Array<Inventories>()
+  };
+  inventories: Inventories[] = new Array<Inventories>();
   constructor(
     public matdialog: MatDialog,
     private spinner: NgxSpinnerService,
@@ -32,35 +32,58 @@ export class ButtonsComponent implements OnInit {
     this.userToken = await this.auth.init();
     this.getInventories();
   }
-  async deleteMedicine(inventories: Inventories){
-    const confirm =  await Swal.fire({
+  async deleteMedicine(inventories: Inventories) {
+    const confirm = await Swal.fire({
       title: `Are you sure you want to delete ${inventories.medicinename}`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
-      reverseButtons: true
-    }) 
-    if(confirm.isConfirmed){
-      
+      reverseButtons: true,
+    });
+    if (confirm.isConfirmed) {
+      await this.spinner.show();
+      this.inventoriesService
+        .deleteInventory(inventories, this.userToken.token)
+        .subscribe(
+          async (response) => {
+            this.spinner.hide();
+            if (response.affected > 0) {
+              await Swal.fire({
+                icon: 'info',
+                title: 'Inventory Successfully Deleted',
+                timer: 1500,
+              });
+              this.getInventories();
+            }
+          },
+          (err) => {
+            this.spinner.hide();
+
+            Swal.fire({
+              icon: 'error',
+              title: 'One or more student has used it',
+            });
+          }
+        );
     }
   }
   async getInventories() {
-    await this.spinner.show(); 
+    await this.spinner.show();
     this.inventoriesService.getInventories(this.userToken.token).subscribe(
       (Response) => {
-        this.spinner.hide()
+        this.spinner.hide();
         console.log(Response);
-        this.inventories = Response
+        this.inventories = Response;
       },
       (err) => {
-        this.spinner.hide()
+        this.spinner.hide();
         console.log(err);
       }
     );
   }
-  
+
   async addMedicine() {
     let dialog = this.matdialog.open(AddOrEditMedicineComponent, {
       width: '60%',
@@ -76,7 +99,7 @@ export class ButtonsComponent implements OnInit {
           timer: 2000,
           backdrop: false,
         });
-        this.getInventories()
+        this.getInventories();
       }
     });
   }
@@ -98,20 +121,20 @@ export class ButtonsComponent implements OnInit {
       }
     });
   }
-  addStocks() {
+  addStocks(inventory: Inventories) {
     let dialog = this.matdialog.open(AddStocksComponent, {
       width: '60%',
       height: '70%',
+      data: inventory,
     });
     dialog.afterClosed().subscribe(async (res) => {
       if (res === true) {
-        await Swal.fire({
+        Swal.fire({
           icon: 'success',
-          title: 'Medicines Successfully Updated',
-          showConfirmButton: false,
-          timer: 3500,
-          backdrop: false,
-        });
+          title: 'Stocks Sucssfully added',
+          timer: 1500
+        })
+        this.getInventories()
       }
     });
   }

@@ -4,7 +4,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { InventoriesService } from '../../../services/inventories/inventories.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Inventories } from 'src/app/interfaces/inventories.interface';
-import * as _ from 'lodash'
+import * as _ from 'lodash';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-or-edit-medicine',
@@ -12,15 +12,15 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-or-edit-medicine.component.scss'],
 })
 export class AddOrEditMedicineComponent {
-  dosage: string = ''
-  stocks: number = 0
-  indexRetained: number | undefined
-  dosageStocks = new Array<any>()
+  dosage: string = '';
+  stocks: number = 0;
+
+  dosageStocks = new Array<any>();
   inventories: Inventories = {
     medicinename: '',
     indication: '',
     stocks: [],
-    dosage: []
+    dosage: [],
   };
   constructor(
     private spinner: NgxSpinnerService,
@@ -28,35 +28,36 @@ export class AddOrEditMedicineComponent {
     private inventoriesService: InventoriesService,
     private auth: AuthService
   ) {}
-  
-    getDosageIndex(i:number){
-      this.indexRetained = i
-      // alert(i)
-    }
-  addDosage(){
-    let dosage = _.find(this.inventories.dosage, {dosage: this.dosage});
-    if(dosage?.dosage !== this.dosage || this.inventories.dosage?.length === 0){
-      this.inventories.dosage!.push({dosage: this.dosage})
-      this.inventories.stocks!.push({stocks: this.stocks})
+
+  addDosage() {
+    let dosage = _.find(this.inventories.dosage, { dosage: this.dosage });
+    if (
+      dosage?.dosage !== this.dosage ||
+      this.inventories.dosage?.length === 0
+    ) {
+      this.inventories.dosage!.push({ dosage: this.dosage });
+      this.inventories.stocks!.push({ stocks: this.stocks });
       this.dosageStocks.push({
         dosage: this.dosage,
-        stocks: this.stocks
-      })
+        stocks: this.stocks,
+      });
 
-      this.dosage = ''
-      this.stocks = 0
-      
-    }else{
+      this.dosage = '';
+      this.stocks = 0;
+    } else {
       Swal.fire({
         icon: 'error',
         title: 'Already Occured',
-        timer: 2000
-      })
+        timer: 2000,
+      });
     }
-    console.log(this.inventories)
+    console.log(this.inventories);
   }
   async addMedicine() {
-    if(this.inventories.medicinename !== '' && this.inventories.dosage!.length > 0){
+    if (
+      this.inventories.medicinename !== '' &&
+      this.inventories.dosage!.length > 0
+    ) {
       await this.spinner.show();
       const userToken = await this.auth.init();
       this.inventoriesService
@@ -71,15 +72,12 @@ export class AddOrEditMedicineComponent {
             this.dialogRef.close(false);
           }
         );
-    }else{
+    } else {
       Swal.fire({
         icon: 'error',
-        title: 'Please Dont leave a field empty'
-      })
+        title: 'Please Dont leave a field empty',
+      });
     }
-   
-
- 
   }
   close() {
     this.dialogRef.close();

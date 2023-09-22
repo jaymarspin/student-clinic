@@ -1,64 +1,62 @@
 <div class="container">
-    <div class="row mt-5">
-      <div class="col-12">
-        <div class="alert alert-primary">
-          <span>Add Stocks</span>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12">
-        <form>
-      
-          <div class="row mb-1">
-            <div class="col-5">
-              <div [cFormFloating]="true"  >
-                <input
-                  cFormControl
-                  id="floatingInput"
-                  placeholder="name@example.com"
-                  type="email"
-                />
-  
-                <label cLabel for="floatingInput">Dosage</label>
-              </div>
-            </div>
-            <div class="col-5">
-              <div [cFormFloating]="true" >
-                <input
-                  cFormControl
-                  id="floatingInput"
-                  placeholder="name@example.com"
-                  type="email"
-                />
-  
-                <label cLabel for="floatingInput">Stocks</label>
-              </div>
-            </div>
-            <div class="col-2">
-              <button class="btn btn-primary">Add Dosage/Stocks</button>
-            </div>
-          </div>
-          <div class="row mb-2">
-              <div class="col-12">
-                  <span class="badge badge-primary me-1">25mg/200
-  
-                      <i class="fa fa-close"></i>
-                  </span>
-              <span class="badge badge-primary me-1">50mg/300</span>
-              <span class="badge badge-primary me-1">100mg/500</span>
-              </div>
-          </div>
-  
-       
-        </form>
-      </div>
-    </div>
-    <div class="row mt-3">
-      <div class="col-12">
-        <button class="btn btn-primary me-1" (click)="add()">Submit</button>
-        <button class="btn btn-danger" (click)="close()">Close</button>
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="alert alert-primary">
+        <span>Add Stocks</span>
       </div>
     </div>
   </div>
-  
+  <div class="row">
+    <div class="col-12">
+ 
+        <div class="row mb-1">
+          <div class="col-6">
+            <div [cFormFloating]="true">
+              <input
+                [(ngModel)]="dosage"
+                cFormControl
+                id="floatingInput"
+                type="text"
+                disabled
+              />
+
+              <label cLabel for="floatingInput">Dosage</label>
+            </div>
+          </div>
+          <div class="col-6">
+            <div [cFormFloating]="true">
+              <input
+                [(ngModel)]="stocks"
+                cFormControl
+                id="floatingInput"
+                type="number"
+              />
+
+              <label cLabel for="floatingInput">Stocks</label>
+            </div>
+          </div>
+          
+        </div>
+        <div class="row mb-2">
+          <div class="col-12">
+            <span 
+              *ngFor="let item of data.dosage; index as i"
+              (click)="addDosage(i)"
+              class="badge badge-primary me-1 mt-1"
+              >{{ item.dosage }}/
+              {{ item.stocks | stocks }}
+
+              <i class="fa fa-close"></i>
+            </span>
+          </div>
+        </div>
+ 
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-12">
+      <button class="btn btn-primary me-1" (click)="addStocks()">Submit</button>
+      <button class="btn btn-danger" (click)="close()">Close</button>
+    </div>
+  </div>
+</div>

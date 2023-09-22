@@ -37,7 +37,7 @@ export class StudentsController {
   findAll() {
     return this.studentsService.findAll();
   }
-
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.studentsService.findOne(+id);
@@ -47,7 +47,7 @@ export class StudentsController {
   update(@Param('id') id: string, @Body() updateStudentDto: UpdateStudentDto) {
     return this.studentsService.update(+id, updateStudentDto);
   }
-
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.studentsService.remove(+id);

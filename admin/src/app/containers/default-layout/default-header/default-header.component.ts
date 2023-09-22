@@ -29,9 +29,7 @@ export class DefaultHeaderComponent extends HeaderComponent {
   async logout() {
     await this.spinner.show();
     this.cookieService.deleteAll();
-    setTimeout(async () => {
-      await this.spinner.hide();
-      window.location.reload();
-    }, 3000);
+    await this.spinner.hide();
+    window.location.reload();
   }
 }
