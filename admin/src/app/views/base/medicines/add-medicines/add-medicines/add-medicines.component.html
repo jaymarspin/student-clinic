@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container pb-3">
     <div class="row mt-5">
       <div class="col-12">
         <div class="alert alert-primary">
@@ -18,10 +18,18 @@
       <div class="alert alert-secondary" *ngIf="choosenMedicine.stocks">
         <span>Medicine: {{choosenMedicine.dosage}}/{{choosenMedicine.stocks | stocks2}}</span>
         <div [cFormFloating]="true" class="mb-3">
+          <input
+            cFormControl
+            id="floatingInput" 
+            type="datetime-local"
+            [(ngModel)]="medicineData.date"
+          />
+          <label cLabel for="floatingInput">Date</label>
+        </div>
+        <div [cFormFloating]="true" class="mb-3">
             <input
               cFormControl
-              id="floatingInput"
-              placeholder="name@example.com"
+              id="floatingInput" 
               type="number"
               [(ngModel)]="medicineData.quantity"
             />

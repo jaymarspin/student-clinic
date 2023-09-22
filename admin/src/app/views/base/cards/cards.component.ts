@@ -28,10 +28,13 @@ export class CardsComponent implements OnInit{
     this.getStudents()
   }
 
-  async addStudent() {
+  async addStudent(edit: boolean) {
     let dialog = this.matdialog.open(AddStudentComponent, {
       width: '60%',
       height: '70%',
+      data: {
+        edit
+      }
     });
     dialog.afterClosed().subscribe(async (res) => {
       this.spinner.hide()

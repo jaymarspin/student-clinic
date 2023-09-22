@@ -29,6 +29,9 @@ export interface Inventories {
     dosage?: Dosage;
     action?: string;
     medicine?: Dosage
-    quantity?: number
+    quantity?: number;
+    inventories?: Inventories;
+    inventoriesVal?: number;
+    date?: string
   }
   

@@ -9,7 +9,7 @@ export class DosagesController {
   constructor(private readonly dosagesService: DosagesService) {}
 
   @Post()
-  create(@Body('dosage') dosage:string,@Body('inventory') inventory:string  ) {
+  create(@Body('dosage') dosage:string,@Body('inventory') inventory:number  ) {
     const inventories:InventoriesEntity = new InventoriesEntity()
     inventories.id = inventory
     return this.dosagesService.create({dosage,inventories: inventories});

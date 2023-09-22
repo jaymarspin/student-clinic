@@ -12,6 +12,7 @@ import { CreateMedicineTakenDto } from './dto/create-medicine-taken.dto';
 import { UpdateMedicineTakenDto } from './dto/update-medicine-taken.dto';
 import { StudentEntity } from 'src/students/entities/student.entity';
 import { DosageEntity } from 'src/dosages/entities/dosage.entity';
+import { InventoriesEntity } from 'src/inventories/entities/inventory.entity';
 
 @Controller('medicine-taken')
 export class MedicineTakenController {
@@ -22,11 +23,16 @@ export class MedicineTakenController {
     @Body('description') description: string,
     @Body('action') action: string,
     @Body('student') studentId: number,
-    @Body('dosageVal') dosageId: number,
     @Body('quantity') quantity: number,
+    @Body('dosageVal') dosageId: number,
+    @Body('inventoriesVal') inventoriesId: number,
+    @Body('date') date: any,
   ) {
     const student: StudentEntity = new StudentEntity();
     student.id = studentId;
+
+    const inventories: InventoriesEntity = new InventoriesEntity();
+    inventories.id = inventoriesId;
 
     const dosage: DosageEntity = new DosageEntity();
     dosage.id = dosageId;
@@ -35,7 +41,9 @@ export class MedicineTakenController {
       dosage,
       student,
       action,
-      quantity
+      quantity,
+      inventories,
+      date
     };
 
     return this.medicineTakenService.create(data);

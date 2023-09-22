@@ -17,7 +17,7 @@ export class StudentsService {
   }
 
   findAll() {
-    return this.students.find();
+    return this.students.find({order: {fullname: 'ASC'}});
   }
 
   findOne(id: number) {

@@ -8,7 +8,6 @@ import { StudentEntity } from 'src/students/entities/student.entity';
 
 @Injectable()
 export class MedicineTakenService {
-
   constructor(
     @InjectRepository(MedicineTakenEntity)
     private readonly medicineTake: Repository<MedicineTakenEntity>,
@@ -22,13 +21,17 @@ export class MedicineTakenService {
   }
 
   findOne(id: number) {
-    return this.medicineTake.findOneBy({id: id});
+    return this.medicineTake.findOneBy({ id: id });
   }
 
-  findByStudent(id: number){
-    const student = new StudentEntity()
-    student.id = id
-    return this.medicineTake.find({where: {student: student},relations: ['dosage']});
+  findByStudent(id: number) {
+    const student = new StudentEntity();
+    student.id = id;
+    return this.medicineTake.find({
+      where: { student: student },
+      relations: ['dosage', 'inventories'],
+      order: { created_at: 'DESC' },
+    });
   }
 
   update(id: number, updateMedicineTakenDto: UpdateMedicineTakenDto) {

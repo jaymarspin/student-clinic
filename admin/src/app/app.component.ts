@@ -10,7 +10,7 @@ import { Title } from '@angular/platform-browser';
   template: '<router-outlet></router-outlet>',
 })
 export class AppComponent implements OnInit {
-  title = 'Student Clinic';
+  title = 'Notre Dame-Siena College of Polomolok';
 
   constructor(
     private router: Router,

@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12">
-    <button class="btn btn-primary" (click)="addStudent()">Add Students</button>
+    <button class="btn btn-primary" (click)="addStudent(false)">Add Students</button>
   </div>
 </div>
 <div class="row mt-3">
@@ -22,6 +22,9 @@
           <td>{{ student.email }}</td>
           <td>{{ student.created_at | momentjs2 }}</td>
           <td>
+            <button class="btn btn-secondary me-1" (click)="addStudent(true)">
+              Edit
+            </button>
             <button class="btn btn-secondary" (click)="viewMedicines(student)">
               Medicines
             </button>

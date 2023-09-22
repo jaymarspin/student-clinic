@@ -1,4 +1,5 @@
 import { DosageEntity } from 'src/dosages/entities/dosage.entity';
+import { InventoriesEntity } from 'src/inventories/entities/inventory.entity';
 import { StudentEntity } from 'src/students/entities/student.entity';
 import {
   Column,
@@ -22,6 +23,13 @@ export class MedicineTakenEntity {
   })
   action?: string;
 
+
+  @Column({
+    type: 'datetime',
+    nullable: true,
+  })
+  date?: any;
+
   @Column({
     nullable: true,
   })
@@ -29,6 +37,10 @@ export class MedicineTakenEntity {
 
   @ManyToOne(() => StudentEntity, (student) => student.id)
   student: StudentEntity;
+
+
+  @ManyToOne(() => InventoriesEntity, (inventories) => inventories.id)
+  inventories: InventoriesEntity;
 
   @ManyToOne(() => DosageEntity, (dosage) => dosage.id)
   dosage: DosageEntity;

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner'; 
 import { Student } from '../../../interfaces/student.interface';
 import { StudentService } from '../../../services/student/student.service';
@@ -23,6 +23,7 @@ export class AddStudentComponent {
     public studentService: StudentService,
     private auth: AuthService,
     public matdialog: MatDialog,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   async add() {

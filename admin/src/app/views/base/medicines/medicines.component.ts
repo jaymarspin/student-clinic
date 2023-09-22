@@ -56,8 +56,8 @@ export class MedicinesComponent implements OnInit {
     const userToken: UserToken = await this.auth.init();
     this.inventoriesService.getByStudent(this.data,userToken.token).subscribe(
       (Response) => {
+  
         console.log(Response)
-
         this.medicines = Response
         this.spinner.hide();
          
@@ -77,7 +77,6 @@ export class MedicinesComponent implements OnInit {
         medicine: medicine,
       },
     });
-
     dialog2.afterClosed().subscribe(async (res) => {
       this.spinner.hide();
       if (res === true) {
@@ -88,6 +87,7 @@ export class MedicinesComponent implements OnInit {
           timer: 2500,
           backdrop: false,
         });
+        this.getMedicineByStudent()
       } else if (res === false) {
         await Swal.fire({
           icon: 'error',

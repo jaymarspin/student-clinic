@@ -22,7 +22,9 @@ export class AddMedicinesComponent implements OnInit{
     dosageVal: 0,
     student: 0,
     action: '',
-    quantity: 1
+    quantity: 1,
+    inventoriesVal: 0,
+    date: ''
   }
 
   constructor(
@@ -44,6 +46,8 @@ export class AddMedicinesComponent implements OnInit{
       await this.spinner.show()
       this.medicineData.dosageVal = this.data.medicine.dosage[0].id
       this.medicineData.student = this.data.student.id
+
+      this.medicineData.inventoriesVal = this.data.medicine.id
       
       this.inventoriesService.addMedicine(this.medicineData,userToken.token).subscribe(response =>{
         this.dialogRef.close(true)

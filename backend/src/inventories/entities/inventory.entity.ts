@@ -10,7 +10,7 @@ import {
 
 @Entity('inventories')
 export class InventoriesEntity {
-  @PrimaryGeneratedColumn('increment') id: string;
+  @PrimaryGeneratedColumn('increment') id: number;
   @Column({
     type: 'varchar',
     nullable: false,

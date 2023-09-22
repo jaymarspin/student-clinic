@@ -14,12 +14,12 @@ import { MedicineTakenModule } from './medicine-taken/medicine-taken.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '127.0.0.1',
+      host: 'raisemax.cmlqfygo9gs6.us-west-1.rds.amazonaws.com',
       port: 3306,
-      username: 'root',
-      password: '',
-      database: 'pos',
-      synchronize: true,
+      username: 'admin',
+      password: '123raisemax',
+      database: 'pos2',
+      synchronize: true, 
       autoLoadEntities: true,
       logging: false, 
       
