@@ -15,7 +15,12 @@ import { Inventories } from 'src/app/interfaces/inventories.interface';
   styleUrls: ['./buttons.component.scss'],
 })
 export class ButtonsComponent implements OnInit {
-
+  userToken: UserToken ={
+    token: '',
+    id: 0,
+    user: '',
+    role: '',
+  }
   inventories:Inventories[] = new Array<Inventories>()
   constructor(
     public matdialog: MatDialog,
@@ -23,15 +28,27 @@ export class ButtonsComponent implements OnInit {
     private inventoriesService: InventoriesService,
     private auth: AuthService
   ) {}
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.userToken = await this.auth.init();
     this.getInventories();
   }
-
+  async deleteMedicine(inventories: Inventories){
+    const confirm =  await Swal.fire({
+      title: `Are you sure you want to delete ${inventories.medicinename}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      reverseButtons: true
+    }) 
+    if(confirm.isConfirmed){
+      
+    }
+  }
   async getInventories() {
-    await this.spinner.show();
-    const userToken: UserToken = await this.auth.init();
-    this.inventoriesService.getInventories(userToken.token).subscribe(
-  
+    await this.spinner.show(); 
+    this.inventoriesService.getInventories(this.userToken.token).subscribe(
       (Response) => {
         this.spinner.hide()
         console.log(Response);

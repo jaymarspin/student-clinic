@@ -4,6 +4,7 @@ import { AuthDto } from './dto';
 import * as bcrypt from 'bcrypt';
 import { AccountsService } from 'src/accounts/accounts.service';
 import { UsersService } from 'src/users/users.service';
+import { UserEntity } from 'src/users/entities/user.entity';
 @Injectable()
 export class AuthService {
   constructor(private jwtService: JwtService, private account: UsersService) { }
@@ -19,7 +20,7 @@ export class AuthService {
  
   async validate(dto: AuthDto) {
     
-    let user;
+    let user:UserEntity;
     let token;
     await this.account.getUserByUsername(dto.username).then(data => {
       user = data
@@ -33,10 +34,12 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       bcrypt.compare(dto.password, user.password, (err, res) => {
         if (res === true) {
+          console.log(user.role)
           token = {
             token: this.signUser(user.id, user.username, 'user'),
             id: user.id,
-            user: user
+            user: user.username,
+            role: user.role
           }
           resolve(token)
 

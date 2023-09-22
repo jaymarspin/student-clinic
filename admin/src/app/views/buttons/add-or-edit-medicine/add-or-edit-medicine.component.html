@@ -8,70 +8,78 @@
   </div>
   <div class="row">
     <div class="col-12">
-    
-        <div [cFormFloating]="true" class="mb-3">
-          <input
-            cFormControl
-            id="floatingInput"
-            placeholder="name@example.com"
-            type="text"
-            [(ngModel)]="inventories.medicinename"
-          />
-          <label cLabel for="floatingInput">Medicine</label>
-        </div>
+      <div [cFormFloating]="true" class="mb-3">
+        <input
+          cFormControl
+          id="floatingInput"
+          placeholder="name@example.com"
+          type="text"
+          [(ngModel)]="inventories.medicinename"
+        />
+        <label cLabel for="floatingInput">Medicine</label>
+      </div>
 
-        <div class="row mb-1">
-          <div class="col-5">
-            <div [cFormFloating]="true"  >
-              <input
+      <div class="row mb-1">
+        <div class="col-5">
+          <div [cFormFloating]="true">
+            <input
               [(ngModel)]="dosage"
-                cFormControl 
-                placeholder="name@example.com"
-                type="text"
-              />
+              cFormControl
+              placeholder="name@example.com"
+              type="text"
+            />
 
-              <label cLabel for="floatingInput">Dosage</label>
-            </div>
+            <label cLabel for="floatingInput">Dosage</label>
           </div>
-          <div class="col-5">
-            <div [cFormFloating]="true" >
-              <input
+        </div>
+        <div class="col-5">
+          <div [cFormFloating]="true">
+            <input
               [(ngModel)]="stocks"
-                cFormControl
-                id="floatingInput"
-                placeholder="name@example.com"
-                type="number"
-              />
+              cFormControl
+              id="floatingInput"
+              placeholder="name@example.com"
+              type="number"
+            />
 
-              <label cLabel for="floatingInput">Stocks</label>
-            </div>
-          </div>
-          <div class="col-2">
-            <button class="btn btn-primary" (click)="addDosage()">Add Dosage/Stocks</button>
+            <label cLabel for="floatingInput">Stocks</label>
           </div>
         </div>
-        <div class="row mb-2">
-            <div class="col-12">
-                <span *ngFor="let item of inventories.dosage;index as i" (click)="getDosageIndex(i)" class="badge badge-primary me-1 mt-1">{{item.dosage}}/
-                    <i class="fa fa-close"></i>
-                </span>
-            </div>
+        <div class="col-2">
+          <button class="btn btn-primary" (click)="addDosage()">
+            Add Dosage/Stocks
+          </button>
         </div>
+      </div>
+      <div class="row mb-2">
+        <div class="col-12">
+          <span
+            *ngFor="let item of dosageStocks; index as i"
+            (click)="getDosageIndex(i)"
+            class="badge badge-primary me-1 mt-1"
+            >{{ item.dosage }}/
+            {{ item.stocks }}
 
-        <div cFormFloating>
-          <label cLabel for="exampleFormControlTextarea1">Indication</label>
-          <textarea
-            style="height: 100px"
-            cFormControl 
-            [(ngModel)]="inventories.indication"
-          ></textarea>
+            <i class="fa fa-close"></i>
+          </span>
         </div>
-     
+      </div>
+
+      <div cFormFloating>
+        <label cLabel for="exampleFormControlTextarea1">Indication</label>
+        <textarea
+          style="height: 100px"
+          cFormControl
+          [(ngModel)]="inventories.indication"
+        ></textarea>
+      </div>
     </div>
   </div>
   <div class="row mt-3">
     <div class="col-12">
-      <button class="btn btn-primary me-1" (click)="addMedicine()">Submit</button>
+      <button class="btn btn-primary me-1" (click)="addMedicine()">
+        Submit
+      </button>
       <button class="btn btn-danger" (click)="close()">Close</button>
     </div>
   </div>

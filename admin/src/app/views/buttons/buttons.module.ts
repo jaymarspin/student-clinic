@@ -26,10 +26,12 @@ import { IconModule } from '@coreui/icons-angular';
 import { AddOrEditMedicineComponent } from './add-or-edit-medicine/add-or-edit-medicine.component';
 import { AddStocksComponent } from './add-stocks/add-stocks.component'; 
 import { StocksPipe } from 'src/app/pipes/stocks/stocks.pipe';
+import {StocksGetPipe}from 'src/app/pipes/stocksGet/stocks-get.pipe';
 @NgModule({
   declarations: [
     ButtonsComponent,
     ButtonGroupsComponent, 
+    StocksGetPipe,
     DropdownsComponent, AddOrEditMedicineComponent, AddStocksComponent,StocksPipe
   ],
   imports: [

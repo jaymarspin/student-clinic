@@ -11,7 +11,7 @@ import {
 
 @Entity('user')
 export class UserEntity {
-  @PrimaryGeneratedColumn('increment') id: string;
+  @PrimaryGeneratedColumn('increment') id: number;
   @Column({
     type: 'varchar',
     nullable: false,

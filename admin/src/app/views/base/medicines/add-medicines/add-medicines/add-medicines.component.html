@@ -35,6 +35,16 @@
             />
             <label cLabel for="floatingInput">Quantity</label>
           </div>
+          
+          <div cFormFloating class="mb-2">
+            <label cLabel for="exampleFormControlTextarea2">Action Taken</label>
+            <textarea 
+              style="height: 100px"
+              cFormControl
+              id="exampleFormControlTextarea2"
+              [(ngModel)]="medicineData.action"
+            ></textarea>
+          </div>
           <div cFormFloating class="mb-2">
             <label cLabel for="exampleFormControlTextarea1">Description Of the Incident</label>
             <textarea 
@@ -44,18 +54,10 @@
               [(ngModel)]="medicineData.description"
             ></textarea>
           </div>
-
-          <div cFormFloating>
-            <label cLabel for="exampleFormControlTextarea2">Action Taken</label>
-            <textarea 
-              style="height: 100px"
-              cFormControl
-              id="exampleFormControlTextarea2"
-              [(ngModel)]="medicineData.action"
-            ></textarea>
-          </div>
  
     </div>
+  
+
     <div class="row mt-3">
       <div class="col-12">
         <button class="btn btn-primary me-1" (click)="addMedicine()">Submit</button>

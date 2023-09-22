@@ -6,11 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
   providedIn: 'root',
 })
 export class AuthService {
-  userToken: UserToken = {
-    token: '',
-    id: '',
-    user: ''
-  };
+  
 
   constructor(
     private cookieService: CookieService,
@@ -18,10 +14,19 @@ export class AuthService {
   ) {}
 
   public async init(): Promise<UserToken> {
-    this.userToken.id =  this.cookieService.get('id');
-    this.userToken.token =  this.cookieService.get('token');
+    const userToken: UserToken = {
+      token: '',
+      id: 0,
+      user: '',
+      role: ''
+    };
+    userToken.id =  +this.cookieService.get('id');
+    userToken.token =  this.cookieService.get('token');
+    userToken.role =  this.cookieService.get('role');
+    userToken.user =  this.cookieService.get('user');
+
     return await new Promise(async (resolve, reject) => {
-      resolve(this.userToken);
+      resolve(userToken);
     });
   }
 

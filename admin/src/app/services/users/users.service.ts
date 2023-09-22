@@ -10,9 +10,14 @@ export class UsersService {
   user: any;
   constructor(private http: HttpClient) {}
 
-  public register(data: User) {
+  public register(data: User,token: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
     return this.http
-      .post(`${this.server}users`, data)
+      .post(`${this.server}users`, data,httpOptions)
       .pipe(map((response) => response as User));
   }
 
@@ -38,7 +43,7 @@ export class UsersService {
       }),
     };
     return this.http
-      .get(`${this.server}users`)
+      .get(`${this.server}users`,httpOptions)
       .pipe(map((response) => response as User[]));
   }
 }

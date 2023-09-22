@@ -15,7 +15,12 @@ import { NgxSpinnerService } from 'ngx-spinner';
   styleUrls: ['./cards.component.scss'],
 })
 export class CardsComponent implements OnInit{
- 
+  userToken: UserToken ={
+    token: '',
+    id: 0,
+    user: '',
+    role: '',
+  }
   students: Student[] = new Array<Student>()
   constructor(
     public matdialog: MatDialog,
@@ -24,8 +29,47 @@ export class CardsComponent implements OnInit{
     private spinner: NgxSpinnerService
   ) {}
 
-  ngOnInit(): void {
+  async deleteStudent(student: Student){
+   const confirm =  await Swal.fire({
+      title: `Are you sure you want to delete ${student.fullname}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      reverseButtons: true
+    }) 
+    if(confirm.isConfirmed){
+      await this.spinner.show()
+      this.studentService.deleteStudent(student,this.userToken.token).subscribe(async response =>{
+        this.spinner.hide()
+        if(response.affected > 0){
+          await Swal.fire({
+            icon: 'info',
+            title: 'Student Successfully Deleted'
+          })
+        }else{
+          await Swal.fire({
+            icon: 'info',
+            title: 'Record already dont exist'
+          })
+        }
+      },error =>{
+        this.spinner.hide()
+        Swal.fire({
+          icon: 'error',
+          title: error
+        })
+      })
+    }
+   
+  }
+
+  async ngOnInit(): Promise<void> {
+    this.userToken = await this.auth.init();
     this.getStudents()
+ 
+
   }
 
   async addStudent(edit: boolean) {

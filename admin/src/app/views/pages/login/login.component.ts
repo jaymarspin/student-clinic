@@ -27,6 +27,8 @@ export class LoginComponent {
     await this.spinner.show();
     this.usersService.login(this.userLogin).subscribe({
       next: async (res) => {
+
+        console.log(res)
         this.spinner.hide();
         if (!res.id) {
           Object.entries(res).map(async ([key, value]) => {
@@ -60,6 +62,7 @@ export class LoginComponent {
   async setter(res: any): Promise<void> {
     this.cookieService.set('token', res.token);
     this.cookieService.set('id', res.id);
-    this.cookieService.set('user', JSON.stringify(res.user));
+    this.cookieService.set('user', res.user);
+    this.cookieService.set('role', res.role);
   }
 }

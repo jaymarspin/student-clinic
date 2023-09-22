@@ -35,14 +35,20 @@ export class MedicineTakenEntity {
   })
   quantity?: number;
 
-  @ManyToOne(() => StudentEntity, (student) => student.id)
+  @ManyToOne(() => StudentEntity, (student) => student.id,{
+    onDelete: "CASCADE",
+  })
   student: StudentEntity;
 
 
-  @ManyToOne(() => InventoriesEntity, (inventories) => inventories.id)
+  @ManyToOne(() => InventoriesEntity, (inventories) => inventories.id,{
+    onDelete: "CASCADE",
+  })
   inventories: InventoriesEntity;
 
-  @ManyToOne(() => DosageEntity, (dosage) => dosage.id)
+  @ManyToOne(() => DosageEntity, (dosage) => dosage.id,{
+    onDelete: "CASCADE",
+  })
   dosage: DosageEntity;
 
   @CreateDateColumn()

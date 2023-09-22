@@ -5,7 +5,10 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Inventories, medicineData } from 'src/app/interfaces/inventories.interface';
+import {
+  Inventories,
+  medicineData,
+} from 'src/app/interfaces/inventories.interface';
 import { UserToken } from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { InventoriesService } from 'src/app/services/inventories/inventories.service';
@@ -22,6 +25,12 @@ export class MedicinesComponent implements OnInit {
   inventories: Inventories[] = new Array<Inventories>();
 
   medicines: medicineData[] = new Array<medicineData>();
+  userToken: UserToken = {
+    token: '',
+    id: 0,
+    user: '',
+    role: '',
+  };
   constructor(
     private dialogRef: MatDialogRef<MedicinesComponent>,
     private spinner: NgxSpinnerService,
@@ -30,37 +39,36 @@ export class MedicinesComponent implements OnInit {
     public matdialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: Student
   ) {}
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    this.userToken = await this.auth.init();
     this.getInventories();
-    this.getMedicineByStudent()
+    this.getMedicineByStudent();
   }
   close() {
     this.dialogRef.close();
   }
   async getInventories(): Promise<void> {
     await this.spinner.show();
-    const userToken: UserToken = await this.auth.init();
-    this.inventoriesService.getInventories(userToken.token).subscribe(
+
+    this.inventoriesService.getInventories(this.userToken.token).subscribe(
       (Response) => {
         this.spinner.hide();
         this.inventories = Response;
       },
       (err) => {
-        this.spinner.hide(); 
+        this.spinner.hide();
       }
     );
   }
 
-  async getMedicineByStudent(){
+  async getMedicineByStudent() {
     await this.spinner.show();
     const userToken: UserToken = await this.auth.init();
-    this.inventoriesService.getByStudent(this.data,userToken.token).subscribe(
+    this.inventoriesService.getByStudent(this.data, userToken.token).subscribe(
       (Response) => {
-  
-        console.log(Response)
-        this.medicines = Response
+        console.log(Response);
+        this.medicines = Response;
         this.spinner.hide();
-         
       },
       (err) => {
         this.spinner.hide();
@@ -87,7 +95,7 @@ export class MedicinesComponent implements OnInit {
           timer: 2500,
           backdrop: false,
         });
-        this.getMedicineByStudent()
+        this.getMedicineByStudent();
       } else if (res === false) {
         await Swal.fire({
           icon: 'error',

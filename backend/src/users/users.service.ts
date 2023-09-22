@@ -19,11 +19,11 @@ export class UsersService {
     return this.user.find();
   }
 
-  public async getUserByUsername(username: string): Promise<UserEntity | undefined> {
+  public async getUserByUsername(username: string): Promise<UserEntity> {
     return this.user.findOneBy({ username: username})
   }
 
-  findOne(id: string): Promise<UserEntity> {
+  findOne(id: number): Promise<UserEntity> {
     return null
   }
 
@@ -36,6 +36,6 @@ export class UsersService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return this.user.delete({id});
   }
 }

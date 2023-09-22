@@ -11,10 +11,12 @@ import {
 import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
+import { JwtAuthGuard } from 'src/utils/guards/jwt-guard.guard';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
-
+  
+  @UseGuards(JwtAuthGuard)
   @Post()
   async create(
     @Body('fullname') fullname: string,
@@ -34,15 +36,17 @@ export class UsersController {
       role,
     });
   }
-  // @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.usersService.findAll();
   }
 
+
+  @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
+    return this.usersService.findOne(+id);
   }
 
   @Patch(':id')

@@ -29,6 +29,6 @@ export class StudentsService {
   }
 
   remove(id: number) {
-    return `This action removes a #${id} student`;
+    return this.students.delete({id});
   }
 }

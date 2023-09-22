@@ -28,7 +28,10 @@
             >
           </td>
           <td>
-            <button class="btn btn-secondary me-1" (click)="edit()">
+            <button *ngIf="userToken.role ==='super admin'" class="btn btn-danger me-1" (click)="deleteMedicine(inventory)">
+              Delete
+            </button>
+            <button  class="btn btn-secondary me-1" (click)="edit()">
               Edit
             </button>
             <button class="btn btn-secondary" (click)="addStocks()">

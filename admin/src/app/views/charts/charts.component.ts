@@ -4,7 +4,8 @@ import Swal from 'sweetalert2';
 import { AddOrEditUserComponent } from './add-or-edit-user/add-or-edit-user.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UsersService } from '../../services/users/users.service';
-import { User } from 'src/app/interfaces/user.interface';
+import { User, UserToken } from 'src/app/interfaces/user.interface';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-charts',
   templateUrl: './charts.component.html',
@@ -12,18 +13,28 @@ import { User } from 'src/app/interfaces/user.interface';
 })
 export class ChartsComponent implements OnInit {
   users: User[] = new Array<User>()
+  userToken: UserToken ={
+    token: '',
+    id: 0,
+    user: '',
+    role: '',
+  }
   constructor(
     public matdialog: MatDialog,
     private spinner: NgxSpinnerService,
-    public UsersService: UsersService
-  ) {}
+    public UsersService: UsersService,
+    private auth: AuthService
+  ) {
+   
+  }
   async ngOnInit(): Promise<void> {
     this.getUsers()
+    this.userToken = await this.auth.init();
   }
 
   async getUsers(){
     await this.spinner.show();
-    this.UsersService.getUsers().subscribe((res) => {
+    this.UsersService.getUsers(this.userToken.token).subscribe((res) => {
       this.users = res
       console.log(this.users)
       this.spinner.hide()

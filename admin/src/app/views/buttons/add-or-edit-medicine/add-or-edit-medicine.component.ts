@@ -15,6 +15,7 @@ export class AddOrEditMedicineComponent {
   dosage: string = ''
   stocks: number = 0
   indexRetained: number | undefined
+  dosageStocks = new Array<any>()
   inventories: Inventories = {
     medicinename: '',
     indication: '',
@@ -37,6 +38,14 @@ export class AddOrEditMedicineComponent {
     if(dosage?.dosage !== this.dosage || this.inventories.dosage?.length === 0){
       this.inventories.dosage!.push({dosage: this.dosage})
       this.inventories.stocks!.push({stocks: this.stocks})
+      this.dosageStocks.push({
+        dosage: this.dosage,
+        stocks: this.stocks
+      })
+
+      this.dosage = ''
+      this.stocks = 0
+      
     }else{
       Swal.fire({
         icon: 'error',
@@ -44,34 +53,33 @@ export class AddOrEditMedicineComponent {
         timer: 2000
       })
     }
+    console.log(this.inventories)
   }
   async addMedicine() {
-    await this.spinner.show();
-    const userToken = await this.auth.init();
-    this.inventoriesService
-      .addInventory(this.inventories, userToken.token)
-      .subscribe(
-        (Response) => {
-          console.log(Response);
-          this.dialogRef.close(true);
-        },
-        (err) => {
-          console.log(err);
-          this.dialogRef.close(false);
-        }
-      );
+    if(this.inventories.medicinename !== '' && this.inventories.dosage!.length > 0){
+      await this.spinner.show();
+      const userToken = await this.auth.init();
+      this.inventoriesService
+        .addInventory(this.inventories, userToken.token)
+        .subscribe(
+          (Response) => {
+            console.log(Response);
+            this.dialogRef.close(true);
+          },
+          (err) => {
+            console.log(err);
+            this.dialogRef.close(false);
+          }
+        );
+    }else{
+      Swal.fire({
+        icon: 'error',
+        title: 'Please Dont leave a field empty'
+      })
+    }
+   
 
-    // setTimeout(async () => {
-    //   this.spinner.hide();
-    //   await Swal.fire({
-    //     icon: 'success',
-    //     title: 'Successfully Added',
-    //     showConfirmButton: false,
-    //     timer: 1500,
-    //     backdrop: false,
-    //   });
-    //   this.dialogRef.close();
-    // }, 2000);
+ 
   }
   close() {
     this.dialogRef.close();
