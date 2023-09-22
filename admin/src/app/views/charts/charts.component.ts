@@ -27,6 +27,37 @@ export class ChartsComponent implements OnInit {
   ) {
    
   }
+
+  async deleteUser(user: User){
+    const confirm =  await Swal.fire({
+      title: `Are you sure you want to delete ${user.username}`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+      reverseButtons: true
+    }) 
+    if(confirm.isConfirmed){
+      this.UsersService.deleteUser(user,this.userToken.token).subscribe(async response =>{
+        if(response.affected > 0){
+          await Swal.fire({
+            icon: 'success',
+            title: 'User Successfully deleted',
+            showConfirmButton: false,
+            timer: 3500,
+            backdrop: false,
+          });
+          this.getUsers()
+        }
+      },error =>{
+        Swal.fire({
+          icon:'error',
+          title: error
+        })
+      })
+    }
+  }
   async ngOnInit(): Promise<void> {
     this.getUsers()
     this.userToken = await this.auth.init();
@@ -49,7 +80,7 @@ export class ChartsComponent implements OnInit {
       if (res === true) {
         await Swal.fire({
           icon: 'success',
-          title: 'Locations Successfully added',
+          title: 'User Successfully added',
           showConfirmButton: false,
           timer: 3500,
           backdrop: false,
