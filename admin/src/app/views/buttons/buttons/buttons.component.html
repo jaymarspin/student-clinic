@@ -28,7 +28,7 @@
             <span
               class="badge badge-primary me-1"
               *ngFor="let dosage of inventory.dosage; index as dosageIndex"
-              >{{ dosage.dosage }}/{{ dosage?.stocks | stocks }}</span
+              >{{ dosage.dosage }}/{{ dosage?.stocks | stocks : inventory.medicinetaken : dosage.id}}</span
             >
           </td>
           <td>

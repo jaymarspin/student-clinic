@@ -7,19 +7,19 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Icons'
+      title: 'Reports'
     },
     children: [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'coreui-icons'
+        redirectTo: 'reports'
       },
       {
-        path: 'coreui-icons',
+        path: 'reports',
         component: CoreUIIconsComponent,
         data: {
-          title: 'CoreUI Icons'
+          title: ''
         }
       },
       {

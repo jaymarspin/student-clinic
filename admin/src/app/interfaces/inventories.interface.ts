@@ -5,11 +5,13 @@ export interface Inventories {
     updated_at?: string;
     stocks?: Stocks[];
     dosage?: Dosage[];
-    id?: number
+    id?: number;
+    medicinetaken?: any
   }
 
 
   export interface Stocks {
+    id?: number;
     stocks: number;
     created_at?: string;
     updated_at?: string;
@@ -21,7 +23,8 @@ export interface Inventories {
     stocks?: Stocks | any;
     created_at?: string;
     updated_at?: string;
-    id?: number
+    id?: any;
+    
   }
 
   export interface medicineData{

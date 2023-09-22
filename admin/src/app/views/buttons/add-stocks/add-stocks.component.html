@@ -44,8 +44,7 @@
               (click)="addDosage(i)"
               class="badge badge-primary me-1 mt-1"
               >{{ item.dosage }}/
-              {{ item.stocks | stocks }}
-
+              {{ item.stocks | stocks : data.medicinetaken :  item.id }}
               <i class="fa fa-close"></i>
             </span>
           </div>

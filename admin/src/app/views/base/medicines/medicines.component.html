@@ -59,7 +59,7 @@
                       let dosage of inventory.dosage;
                       index as dosageIndex
                     "
-                    >{{ dosage.dosage }}/{{ dosage?.stocks | stocks2 }}</span
+                    >{{ dosage.dosage }}/{{ dosage?.stocks | stocks2 : inventory.medicinetaken : dosage.id }}</span
                   >
                 </td>
                 <td>

@@ -16,7 +16,7 @@ export class InventoriesService {
   }
 
   findAll() {
-    return this.inventories.find({ relations: ['dosage', 'dosage.stocks'] });
+    return this.inventories.find({ relations: ['dosage', 'dosage.stocks','medicinetaken','medicinetaken.dosage'] });
   }
 
   findOne(id: number) {

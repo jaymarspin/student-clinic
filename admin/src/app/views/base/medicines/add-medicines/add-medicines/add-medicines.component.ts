@@ -17,9 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-medicines.component.scss'],
 })
 export class AddMedicinesComponent implements OnInit {
-  choosenMedicine: Dosage = {
-    dosage: '',
-  };
+  choosenMedicine: Dosage | undefined;
 
   medicineData: medicineData = {
     description: '',
@@ -46,11 +44,13 @@ export class AddMedicinesComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
+     
     this.userToken = await this.auth.init();
   }
 
   async addMedicine() {
-    if (this.choosenMedicine.dosage !== '') {
+    if (this.choosenMedicine?.dosage !== '') {
+
       if (
         (this.medicineData.description !== undefined &&
           this.medicineData.description !== '' &&
@@ -58,7 +58,7 @@ export class AddMedicinesComponent implements OnInit {
         this.medicineData.date !== '')
       ) {
         await this.spinner.show();
-        this.medicineData.dosageVal = this.data.medicine.dosage[0].id;
+        this.medicineData.dosageVal = this.choosenMedicine?.id;
         this.medicineData.student = this.data.student.id;
 
         this.medicineData.inventoriesVal = this.data.medicine.id;

@@ -1,4 +1,5 @@
 import { DosageEntity } from 'src/dosages/entities/dosage.entity';
+import { MedicineTakenEntity } from 'src/medicine-taken/entities/medicine-taken.entity';
 import {
   Column,
   CreateDateColumn,
@@ -34,4 +35,7 @@ export class InventoriesEntity {
 
   @OneToMany(() => DosageEntity, (dosage) => dosage.inventories, { nullable: true, onDelete: "CASCADE" })
   dosage: DosageEntity;
+
+  @OneToMany(() => MedicineTakenEntity, (medicinetaken) => medicinetaken.inventories, { nullable: true, onDelete: "CASCADE" })
+  medicinetaken: MedicineTakenEntity;
 }
