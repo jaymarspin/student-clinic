@@ -64,7 +64,7 @@ export class ChartsComponent implements OnInit {
   }
 
   async getUsers(){
-    await this.spinner.show();
+    // await this.spinner.show();
     this.UsersService.getUsers(this.userToken.token).subscribe((res) => {
       this.users = res
       console.log(this.users)

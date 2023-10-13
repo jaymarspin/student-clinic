@@ -7,33 +7,31 @@ import { deleteReponse } from 'src/app/interfaces/deleteresponse.interface';
   providedIn: 'root',
 })
 export class UsersService {
-  server = 'http://13.57.226.6:3005/';
+  server = 'http://127.0.0.1:3005/';
   user: any;
   constructor(private http: HttpClient) {}
 
-  public register(data: User,token: any) {
+  public register(data: User, token: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         authorization: `Bearer ${token}`,
       }),
     };
     return this.http
-      .post(`${this.server}users`, data,httpOptions)
+      .post(`${this.server}users`, data, httpOptions)
       .pipe(map((response) => response as User));
   }
 
-
-  public deleteUser(data: User,token: any) {
+  public deleteUser(data: User, token: any) {
     const httpOptions = {
       headers: new HttpHeaders({
         authorization: `Bearer ${token}`,
       }),
     };
     return this.http
-      .delete(`${this.server}users/${data.id}`,httpOptions)
+      .delete(`${this.server}users/${data.id}`, httpOptions)
       .pipe(map((response) => response as deleteReponse));
   }
-  
 
   public login(data: UserLogin) {
     return this.http
@@ -57,7 +55,7 @@ export class UsersService {
       }),
     };
     return this.http
-      .get(`${this.server}users`,httpOptions)
+      .get(`${this.server}users`, httpOptions)
       .pipe(map((response) => response as User[]));
   }
 }
