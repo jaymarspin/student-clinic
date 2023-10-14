@@ -31,8 +31,10 @@ export class UsersService {
     return  null
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  update(id: number, user: UserEntity) {
+    console.log(id)
+    console.log(user)
+    return this.user.update(id,user)
   }
 
   remove(id: number) {

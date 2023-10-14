@@ -8,6 +8,11 @@ export interface User {
     id?: number
    
   }
+
+  export interface UserDialogData {
+   user?: User;
+   edit: boolean
+  }
   
   export interface UserLogin {
     username: string;

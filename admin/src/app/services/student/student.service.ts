@@ -23,6 +23,20 @@ export class StudentService {
       .pipe(map((response) => response as Student));
   }
 
+  
+  public updatePatient(data: Student, token: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http
+      .patch(`${this.server}students/${data.id}`, data, httpOptions)
+      .pipe(map((response) => response as Student));
+  }
+
+  
+
   deleteStudent(data: Student, token: string){
     const httpOptions = {
       headers: new HttpHeaders({

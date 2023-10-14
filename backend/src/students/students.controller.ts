@@ -8,10 +8,9 @@ import {
   Delete,
   UseGuards,
 } from '@nestjs/common';
-import { StudentsService } from './students.service';
-import { CreateStudentDto } from './dto/create-student.dto';
-import { UpdateStudentDto } from './dto/update-student.dto';
+import { StudentsService } from './students.service';  
 import { JwtAuthGuard } from 'src/utils/guards/jwt-guard.guard';
+import { StudentEntity } from './entities/student.entity';
 
 @Controller('students')
 export class StudentsController {
@@ -24,12 +23,18 @@ export class StudentsController {
     @Body('email') email: string,
     @Body('bdate') bdate: any,
     @Body('grade') grade: string,
+    @Body('emergencyContactNo') emergencyContactNo: string,
+    @Body('date_added') date_added: string,
+    @Body('notes') notes: string,
   ) {
     return this.studentsService.create({
       fullname,
       email,
       bdate,
       grade,
+      emergencyContactNo,
+      date_added,
+      notes,
     });
   }
 
@@ -44,8 +49,8 @@ export class StudentsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateStudentDto: UpdateStudentDto) {
-    return this.studentsService.update(+id, updateStudentDto);
+  update(@Param('id') id: string, @Body() student: StudentEntity) {
+    return this.studentsService.update(+id, student);
   }
   @UseGuards(JwtAuthGuard)
   @Delete(':id')

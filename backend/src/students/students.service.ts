@@ -24,8 +24,9 @@ export class StudentsService {
     return `This action returns a #${id} student`;
   }
 
-  update(id: number, updateStudentDto: UpdateStudentDto) {
-    return `This action updates a #${id} student`;
+  update(id: number, student: StudentEntity) {
+    console.log(student)
+    return this.students.update(id,student)
   }
 
   remove(id: number) {

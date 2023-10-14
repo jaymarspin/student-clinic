@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-12">
       <div class="alert alert-primary">
-        <span>Add Student</span>
+        <span>{{data.edit ? 'Edit' : 'Add'}} Patients</span>
       </div>
     </div>
   </div>
@@ -19,15 +19,35 @@
           />
           <label cLabel for="floatingInput">Email Address</label>
         </div>
+      
         <div [cFormFloating]="true" class="mb-3">
           <input
             cFormControl
-            id="floatingInput"
-            placeholder="name@example.com"
-            type="email"
+            id="floatingInput" 
+            type="text"
             [(ngModel)]="student.fullname"
           />
           <label cLabel for="floatingInput">Full Name</label>
+        </div>
+
+        <div [cFormFloating]="true" class="mb-3">
+          <input
+            cFormControl
+            id="floatingInput" 
+            type="text"
+            [(ngModel)]="student.emergencyContactNo"
+          />
+          <label cLabel for="floatingInput">In case of emergencies Contact No.</label>
+        </div>
+
+        <div [cFormFloating]="true" class="mb-3">
+          <input
+            cFormControl
+            id="floatingInput" 
+            type="date"
+            [(ngModel)]="student.date_added"
+          />
+          <label cLabel for="floatingInput">Date Added</label>
         </div>
         <div [cFormFloating]="true" class="mb-3">
           <select
@@ -39,12 +59,22 @@
             [cFormFloating]="true"
             class="mb-3"
           >
-            <option>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
+       
+            <option value="grade 1">Grade 1</option>
+            <option value="grade 2">Grade 2</option>
+            <option value="grade 3">Grade 3</option>
+            <option value="grade 4">Grade 4</option>
+            <option value="grade 5">Grade 5</option>
+            <option value="grade 6">Grade 6</option>
+            <option value="grade 7">Grade 7</option>
+            <option value="grade 8">Grade 8</option>
+            <option value="grade 9">Grade 9</option>
+            <option value="grade 10">Grade 10</option>
+            <option value="grade 11">Grade 11</option>
+            <option value="grade 12">Grade 12</option>
+            <option value="faculty staff">Faculty Staff</option> 
           </select>
-          <label cLabel for="floatingInput">Grade Year</label>
+          <label cLabel for="floatingInput">Grade/Faculty Staff</label>
         </div>
 
         <div cFormFloating>
@@ -61,7 +91,7 @@
   </div>
   <div class="row mt-3">
     <div class="col-12">
-      <button class="btn btn-primary me-1" (click)="add()">Submit</button>
+      <button class="btn btn-primary me-1" (click)="data.edit ? edit(): add()">Submit</button>
       <button class="btn btn-danger" (click)="close()">Close</button>
     </div>
   </div>

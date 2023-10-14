@@ -21,6 +21,17 @@ export class UsersService {
       .post(`${this.server}users`, data, httpOptions)
       .pipe(map((response) => response as User));
   }
+  public updateUser(data: User, token: any) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http
+      .patch(`${this.server}users/${data.id}`, data, httpOptions)
+      .pipe(map((response) => response as User));
+  }
+  
 
   public deleteUser(data: User, token: any) {
     const httpOptions = {

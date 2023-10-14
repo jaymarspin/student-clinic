@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-12">
       <div class="alert alert-primary">
-        <span>Add User</span>
+        <span>{{data.edit ? 'Edit' : 'Update'}} User</span>
       </div>
     </div>
   </div>
@@ -19,25 +19,28 @@
           <label cLabel for="floatingInput">Username</label>
         </div>
 
-        <div [cFormFloating]="true" class="mb-3">
-          <input
-            cFormControl
-            id="floatingInput" 
-            type="password"
-            [(ngModel)]="password"
-          />
-          <label cLabel for="floatingInput">Password</label>
-        </div>
+        <ng-container *ngIf="!data.edit || (data.edit && data.user?.id === userToken.id)">
 
-        <div [cFormFloating]="true" class="mb-3">
-          <input
-            cFormControl
-            [(ngModel)]="rpassword"
-            id="floatingInput" 
-            type="password"
-          />
-          <label cLabel for="floatingInput">Repeat Password</label>
-        </div>
+          <div [cFormFloating]="true" class="mb-3">
+            <input
+              cFormControl
+              id="floatingInput" 
+              type="password"
+              [(ngModel)]="password"
+            />
+            <label cLabel for="floatingInput">Password</label>
+          </div>
+  
+          <div [cFormFloating]="true" class="mb-3">
+            <input
+              cFormControl
+              [(ngModel)]="rpassword"
+              id="floatingInput" 
+              type="password"
+            />
+            <label cLabel for="floatingInput">Repeat Password</label>
+          </div>
+        </ng-container>
         <div [cFormFloating]="true" class="mb-3">
           <input
           [(ngModel)]="fullname"
@@ -69,7 +72,7 @@
   </div>
   <div class="row mt-3">
     <div class="col-12">
-      <button class="btn btn-primary me-1" (click)="addUser()">Submit</button>
+      <button *ngIf="!data.edit || (data.edit && data.user?.id === userToken.id)" class="btn btn-primary me-1" (click)="data.edit ? updateUser() : addUser()">Submit</button>
       <button class="btn btn-danger" (click)="close()">Close</button>
     </div>
   </div>

@@ -17,12 +17,30 @@ import {
       nullable: false,
     })
     fullname: string;
+
+    @Column({
+      type: 'varchar',
+      nullable: false,
+    })
+    emergencyContactNo: string;
+
+    @Column({
+      type: 'date',
+      nullable: true,
+    })
+    date_added?: Date;
   
     @Column({
       type: 'varchar',
       nullable: false,
     })
     email: string;
+
+    @Column({
+      
+      nullable: false,
+    })
+    notes: string;
   
     @Column({
       type: 'date',

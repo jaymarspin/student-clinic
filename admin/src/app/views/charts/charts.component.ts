@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 import { AddOrEditUserComponent } from './add-or-edit-user/add-or-edit-user.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UsersService } from '../../services/users/users.service';
-import { User, UserToken } from 'src/app/interfaces/user.interface';
+import { User, UserDialogData, UserToken } from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-charts',
@@ -71,10 +71,14 @@ export class ChartsComponent implements OnInit {
       this.spinner.hide()
     });
   }
-  editUser() {
+  editUser(user: User) {
     let dialog = this.matdialog.open(AddOrEditUserComponent, {
       width: '60%',
       height: '70%',
+      data: {
+        edit: true,
+        user
+      } as UserDialogData
     });
     dialog.afterClosed().subscribe(async (res) => {
       if (res === true) {
@@ -93,6 +97,10 @@ export class ChartsComponent implements OnInit {
     let dialog = this.matdialog.open(AddOrEditUserComponent, {
       width: '60%',
       height: '70%',
+      data: {
+        edit: false,
+    
+      } as UserDialogData
     });
     dialog.afterClosed().subscribe(async (res) => {
       if (res === true) {

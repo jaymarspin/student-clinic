@@ -12,6 +12,7 @@ import { UsersService } from './users.service';
 import { UpdateUserDto } from './dto/update-user.dto';
 import * as bcrypt from 'bcrypt';
 import { JwtAuthGuard } from 'src/utils/guards/jwt-guard.guard';
+import { UserEntity } from './entities/user.entity';
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -36,7 +37,7 @@ export class UsersController {
       role,
     });
   }
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   @Get()
   findAll() {
     return this.usersService.findAll();
@@ -50,8 +51,11 @@ export class UsersController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  async update(@Param('id') id: string, @Body() user: UserEntity) {
+    const saltOrRounds = 10;
+
+    user.password = await bcrypt.hash(user.password, saltOrRounds);
+    return this.usersService.update(+id, user);
   }
 
   @Delete(':id')

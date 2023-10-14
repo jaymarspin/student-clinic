@@ -42,6 +42,8 @@ export class AddOrEditMedicineComponent {
         stocks: this.stocks,
       });
 
+      console.log(this.dosageStocks)
+
       this.dosage = '';
       this.stocks = 0;
     } else {
