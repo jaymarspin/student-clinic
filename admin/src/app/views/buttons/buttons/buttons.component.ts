@@ -7,7 +7,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { InventoriesService } from 'src/app/services/inventories/inventories.service';
 import { UserToken } from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Inventories } from 'src/app/interfaces/inventories.interface';
+import { Inventories, InventoriesDialog } from 'src/app/interfaces/inventories.interface';
 
 @Component({
   selector: 'app-buttons',
@@ -88,6 +88,33 @@ export class ButtonsComponent implements OnInit {
     let dialog = this.matdialog.open(AddOrEditMedicineComponent, {
       width: '60%',
       height: '70%',
+      data: {
+        edit: false
+      } as InventoriesDialog
+    });
+    dialog.afterClosed().subscribe(async (res) => {
+      this.spinner.hide();
+      if (res === true) {
+        await Swal.fire({
+          icon: 'success',
+          title: 'Medicines Successfully added',
+          showConfirmButton: false,
+          timer: 2000,
+          backdrop: false,
+        });
+        this.getInventories();
+      }
+    });
+  }
+
+  async updateMedicine(inventories: Inventories) {
+    let dialog = this.matdialog.open(AddOrEditMedicineComponent, {
+      width: '60%',
+      height: '70%',
+      data: {
+        edit: true,
+        inventories:inventories
+      } as InventoriesDialog
     });
     dialog.afterClosed().subscribe(async (res) => {
       this.spinner.hide();

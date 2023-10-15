@@ -2,7 +2,7 @@
   <div class="row mt-5">
     <div class="col-12">
       <div class="alert alert-primary">
-        <span>Add Medicine</span>
+        <span>{{data.edit ? 'Update' : 'Add'}} Medicine</span>
       </div>
     </div>
   </div>
@@ -19,7 +19,7 @@
         <label cLabel for="floatingInput">Medicine</label>
       </div>
 
-      <div class="row mb-1">
+      <div class="row mb-1" *ngIf="!data.edit">
         <div class="col-5">
           <div [cFormFloating]="true">
             <input

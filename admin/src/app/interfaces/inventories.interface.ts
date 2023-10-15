@@ -9,6 +9,11 @@ export interface Inventories {
     medicinetaken?: any
   }
 
+  export interface InventoriesDialog {
+    inventories?: Inventories;
+    edit: boolean
+  }
+
 
   export interface Stocks {
     id?: number;

@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InventoriesService } from '../../../services/inventories/inventories.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Inventories } from 'src/app/interfaces/inventories.interface';
+import { Inventories, InventoriesDialog } from 'src/app/interfaces/inventories.interface';
 import * as _ from 'lodash';
 import Swal from 'sweetalert2';
 @Component({
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './add-or-edit-medicine.component.html',
   styleUrls: ['./add-or-edit-medicine.component.scss'],
 })
-export class AddOrEditMedicineComponent {
+export class AddOrEditMedicineComponent implements OnInit{
   dosage: string = '';
   stocks: number = 0;
 
@@ -26,8 +26,16 @@ export class AddOrEditMedicineComponent {
     private spinner: NgxSpinnerService,
     private dialogRef: MatDialogRef<AddOrEditMedicineComponent>,
     private inventoriesService: InventoriesService,
-    private auth: AuthService
+    private auth: AuthService,
+    @Inject(MAT_DIALOG_DATA) public data: InventoriesDialog
   ) {}
+  ngOnInit(): void {
+    if(this.data.edit){
+      this.inventories = this.data.inventories ?? this.inventories
+    }
+  }
+
+  
 
   addDosage() {
     let dosage = _.find(this.inventories.dosage, { dosage: this.dosage });
@@ -74,6 +82,30 @@ export class AddOrEditMedicineComponent {
             this.dialogRef.close(false);
           }
         );
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Please Dont leave a field empty',
+      });
+    }
+  }
+
+
+  async updateMedicine() {
+    if (
+      this.inventories.medicinename !== '' &&
+      this.inventories.dosage!.length > 0
+    ) {
+      await this.spinner.show();
+       setTimeout(async () =>{
+       await Swal.fire({
+          title: 'Update Succesful',
+          icon: 'info',
+          timer: 2500
+        })
+        this.spinner.hide()
+       },2000)
+     
     } else {
       Swal.fire({
         icon: 'error',
