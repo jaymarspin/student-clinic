@@ -7,16 +7,12 @@
       [cSidebarToggle]="sidebarId"
       class="ps-1"
     >
-      <svg cIcon
-        name="cilMenu"
-        size="lg"
-      ></svg>
+      <svg cIcon name="cilMenu" size="lg"></svg>
     </button>
-    
+
     <c-header-nav class="ms-3">
       <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
     </c-header-nav>
-
   </c-container>
   <c-header-divider></c-header-divider>
   <c-container [fluid]="true">
@@ -27,29 +23,18 @@
 
 <ng-template #userDropdown>
   <c-dropdown alignment="end" variant="nav-item">
-    <button
-      cButton
-      color=""
-      [caret]="false"
-      cDropdownToggle
-      class="py-0"
-    >
-      <c-avatar 
-      >
-
-      <svg cIcon name="cil-user" size="2md"></svg>
+    <button cButton color="" [caret]="false" cDropdownToggle class="btn-toggle">
+      <c-avatar>
+        <svg cIcon name="cil-user" size="2md"></svg>
       </c-avatar>
     </button>
     <ul cDropdownMenu class="pt-0 pr-5 w-auto">
-       
       <li>
         <a (click)="logout()" cDropdownItem>
           <svg cIcon class="me-2" name="cilLockLocked"></svg>
           Logout
         </a>
       </li>
-    
     </ul>
   </c-dropdown>
 </ng-template>
-

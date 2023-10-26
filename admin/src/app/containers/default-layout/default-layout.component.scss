@@ -5,3 +5,36 @@
     --scrollbar-hover-size: calc(var(--scrollbar-size) * 1.5);
   }
 }
+c-sidebar-brand,ng-scrollbar {
+  z-index: 5;
+  position: relative;
+  display: block;
+  text-align: center;
+  background: none;
+}
+c-sidebar-nav{
+  color: #fff !important;
+  font-size: 18px;
+  z-index: 5 !important;
+  position: relative;
+  display: block;
+  background: none !important;
+  text-align: center;
+  font-weight: bold;
+ 
+}
+ a{
+  color: #fff !important;
+}
+
+.backdrop{
+  position: absolute;
+  background-color: #000;
+  opacity: 0.3;
+  width: 100%;
+  display: block;
+  height: 100%;
+  z-index: 0;
+  
+}
+ 

@@ -1,56 +1,77 @@
-
-<ngx-spinner   bdColor="rgba(0, 0, 0, 0.8)" size="large" type="ball-atom"
-  [fullScreen]="true">
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="large"
+  type="ball-atom"
+  [fullScreen]="true"
+>
 </ngx-spinner>
-<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+<div
+  class="min-vh-100 d-flex flex-row align-items-center contentt"
+  style="
+    background-image: url(assets/bg.jpg);
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+  "
+>
   <c-container>
+    <c-row>
+      <c-col>
+        <h1 class="login-title">Notre Dame- Siena College of Polomolok Clinic Inventory System</h1>
+      </c-col>
+    </c-row>
     <c-row class="justify-content-center">
-      <c-col md="8">
+      <c-col md="6">
         <c-card-group>
+          <div class="backdrop">
+      
+          </div>
           <c-card class="p-4">
             <c-card-body>
-              
-                <h1>Login</h1>
-                <p class="text-medium-emphasis">Sign In to your account</p>
-                <c-input-group class="mb-3">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilUser"></svg>
-                  </span>
-                  <input
+              <h1>Login</h1>
+              <p class="text-medium-emphasis">Sign In to your account</p>
+              <c-input-group class="mb-4">
+                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                <input
                   [(ngModel)]="userLogin.username"
-                  autoComplete="username" cFormControl placeholder="Username" />
-                </c-input-group>
-                <c-input-group class="mb-4">
-                  <span cInputGroupText>
-                    <svg cIcon name="cilLockLocked"></svg>
-                  </span>
-                  <input
+                  autoComplete="username"
+                  cFormControl
+                  placeholder="Username"
+                />
+              </c-input-group>
+              <c-input-group class="mb-4">
+                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                <input
                   [(ngModel)]="userLogin.password"
-                    autoComplete="current-password"
-                    cFormControl
-                    placeholder="Password"
-                    type="password"
-                  />
-                </c-input-group>
-                <c-row>
-                  <c-col xs="6">
-                    <button cButton class="px-4" color="primary" (click)="login()">
-                      Login
-                    </button>
-                  </c-col>
-                 
-                </c-row>
-            
+                  autoComplete="current-password"
+                  cFormControl
+                  class="text-input-bg-gray"
+                  placeholder="Password"
+                  type="password"
+                />
+              </c-input-group>
+              <c-row>
+                <c-col xs="6">
+                  <button
+                    cButton
+                    class="bg-btn"
+                    (click)="login()"
+                  >
+                    Login
+                  </button>
+                </c-col>
+              </c-row>
             </c-card-body>
           </c-card>
-          <c-card [ngStyle]="{'width.%': 44}" class="text-white bg-primary py-5">
+          <c-card [ngStyle]="{ 'width.%': 44 }" class="text-white">
             <c-card-body class="text-center">
               <div>
-               <img src="assets/logo.jpg" />
-                <p>
-                  Notre Dame-Siena College of Polomolok
-                </p>
-               
+                <img src="assets/logo.png" />
               </div>
             </c-card-body>
           </c-card>

@@ -1,9 +1,9 @@
 <div class="row">
   <div class="col-12">
-    <button class="btn btn-primary" (click)="addStudent(false)" *ngIf="userToken.role === 'super admin' || userToken.role === 'admin'">Add Patients</button>
+    <button class="btn bg-btn btn-secondary" (click)="addStudent(false)" *ngIf="userToken.role === 'super admin' || userToken.role === 'admin'">Add Patients</button>
   </div>
 </div>
-<div class="row mt-3">
+<div class="row mt-3">     
   <div class="col-12">
     <table class="table">
       <thead class="thead-dark">
@@ -19,7 +19,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let student of students; index as i">
-          <th scope="row">1</th>
+          <th scope="row">{{(i + 1)}}</th>
           <td>{{ student.fullname }}</td>
           <td>{{ student.email }}</td>
           <td>{{ student.grade }}</td>
