@@ -5,7 +5,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { Dosage, medicineData } from 'src/app/interfaces/inventories.interface';
+import { Dosage, Inventories, medicineData } from 'src/app/interfaces/inventories.interface';
 import { UserToken } from 'src/app/interfaces/user.interface';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { InventoriesService } from 'src/app/services/inventories/inventories.service';
@@ -17,7 +17,10 @@ import Swal from 'sweetalert2';
   styleUrls: ['./add-medicines.component.scss'],
 })
 export class AddMedicinesComponent implements OnInit {
-  choosenMedicine: Dosage | undefined;
+  inventories: Inventories[] = new Array<Inventories>();
+  choosenMedicine: Dosage  ={
+    dosage: ''
+  };
 
   medicineData: medicineData = {
     description: '',
@@ -46,10 +49,31 @@ export class AddMedicinesComponent implements OnInit {
   async ngOnInit(): Promise<void> {
      
     this.userToken = await this.auth.init();
+    this.getInventories()
+  }
+
+  async getInventories(): Promise<void> {
+    await this.spinner.show();
+
+    this.inventoriesService.getInventories(this.userToken.token).subscribe(
+      (Response) => {
+        this.spinner.hide();
+        this.inventories = Response;
+      },
+      (err) => {
+        this.spinner.hide();
+      }
+    );
+  }
+
+  getChoosenMedicines(med: Inventories){
+    this.medicineData.inventoriesVal = med.id
+    this.choosenMedicine = med.dosage![0]
   }
 
   async addMedicine() {
     if (this.choosenMedicine?.dosage !== '') {
+      
 
       if (
         (this.medicineData.description !== undefined &&
@@ -60,9 +84,9 @@ export class AddMedicinesComponent implements OnInit {
         await this.spinner.show();
         this.medicineData.dosageVal = this.choosenMedicine?.id;
         this.medicineData.student = this.data.student.id;
-
-        this.medicineData.inventoriesVal = this.data.medicine.id;
-
+        
+   
+        console.log(this.medicineData)
         this.inventoriesService
           .addMedicine(this.medicineData, this.userToken.token)
           .subscribe(

@@ -10,20 +10,8 @@
     <div class="col-12">
  
         <div class="row mb-1">
-          <div class="col-6">
-            <div [cFormFloating]="true">
-              <input
-                [(ngModel)]="dosage"
-                cFormControl
-                id="floatingInput"
-                type="text"
-                disabled
-              />
-
-              <label cLabel for="floatingInput">Dosage</label>
-            </div>
-          </div>
-          <div class="col-6">
+          
+          <div class="col-12">
             <div [cFormFloating]="true">
               <input
                 [(ngModel)]="stocks"
@@ -37,18 +25,7 @@
           </div>
           
         </div>
-        <div class="row mb-2">
-          <div class="col-12">
-            <span 
-              *ngFor="let item of data.dosage; index as i"
-              (click)="addDosage(i)"
-              class="badge badge-primary me-1 mt-1"
-              >{{ item.dosage }}/
-              {{ item.stocks | stocks : data.medicinetaken :  item.id }}
-              <i class="fa fa-close"></i>
-            </span>
-          </div>
-        </div>
+        
  
     </div>
   </div>

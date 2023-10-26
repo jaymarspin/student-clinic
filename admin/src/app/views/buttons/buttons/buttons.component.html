@@ -16,7 +16,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Medicine</th>
-          <th scope="col">Dosages/Stocks</th>
+          <th scope="col">Stocks</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -25,11 +25,13 @@
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ inventory.medicinename }}</td>
           <td>
+         
+
             <span
-              class="badge badge-primary me-1"
-              *ngFor="let dosage of inventory.dosage; index as dosageIndex"
-              >{{ dosage.dosage }}/{{ dosage?.stocks | stocks : inventory.medicinetaken : dosage.id}}</span
-            >
+                class="badge badge-primary me-1"
+               
+                >{{ inventory.dosage![0]?.stocks | stocks : inventory.medicinetaken : inventory.dosage![0].id }}</span
+              >
           </td>
           <td>
             <button

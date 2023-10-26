@@ -3,7 +3,10 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { InventoriesService } from '../../../services/inventories/inventories.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { Inventories, InventoriesDialog } from 'src/app/interfaces/inventories.interface';
+import {
+  Inventories,
+  InventoriesDialog,
+} from 'src/app/interfaces/inventories.interface';
 import * as _ from 'lodash';
 import Swal from 'sweetalert2';
 @Component({
@@ -11,7 +14,7 @@ import Swal from 'sweetalert2';
   templateUrl: './add-or-edit-medicine.component.html',
   styleUrls: ['./add-or-edit-medicine.component.scss'],
 })
-export class AddOrEditMedicineComponent implements OnInit{
+export class AddOrEditMedicineComponent implements OnInit {
   dosage: string = '';
   stocks: number = 0;
 
@@ -30,12 +33,10 @@ export class AddOrEditMedicineComponent implements OnInit{
     @Inject(MAT_DIALOG_DATA) public data: InventoriesDialog
   ) {}
   ngOnInit(): void {
-    if(this.data.edit){
-      this.inventories = this.data.inventories ?? this.inventories
+    if (this.data.edit) {
+      this.inventories = this.data.inventories ?? this.inventories;
     }
   }
-
-  
 
   addDosage() {
     let dosage = _.find(this.inventories.dosage, { dosage: this.dosage });
@@ -43,15 +44,6 @@ export class AddOrEditMedicineComponent implements OnInit{
       dosage?.dosage !== this.dosage ||
       this.inventories.dosage?.length === 0
     ) {
-      this.inventories.dosage!.push({ dosage: this.dosage });
-      this.inventories.stocks!.push({ stocks: this.stocks });
-      this.dosageStocks.push({
-        dosage: this.dosage,
-        stocks: this.stocks,
-      });
-
-      console.log(this.dosageStocks)
-
       this.dosage = '';
       this.stocks = 0;
     } else {
@@ -61,13 +53,16 @@ export class AddOrEditMedicineComponent implements OnInit{
         timer: 2000,
       });
     }
-    console.log(this.inventories);
   }
   async addMedicine() {
-    if (
-      this.inventories.medicinename !== '' &&
-      this.inventories.dosage!.length > 0
-    ) {
+    if (this.inventories.medicinename !== '') {
+      this.inventories.dosage!.push({ dosage: '0' });
+      this.inventories.stocks!.push({ stocks: this.stocks });
+      this.dosageStocks.push({
+        dosage: this.dosage,
+        stocks: this.stocks,
+      });
+
       await this.spinner.show();
       const userToken = await this.auth.init();
       this.inventoriesService
@@ -90,22 +85,20 @@ export class AddOrEditMedicineComponent implements OnInit{
     }
   }
 
-
   async updateMedicine() {
     if (
       this.inventories.medicinename !== '' &&
       this.inventories.dosage!.length > 0
     ) {
       await this.spinner.show();
-       setTimeout(async () =>{
-       await Swal.fire({
+      setTimeout(async () => {
+        await Swal.fire({
           title: 'Update Succesful',
           icon: 'info',
-          timer: 2500
-        })
-        this.spinner.hide()
-       },2000)
-     
+          timer: 2500,
+        });
+        this.spinner.hide();
+      }, 2000);
     } else {
       Swal.fire({
         icon: 'error',

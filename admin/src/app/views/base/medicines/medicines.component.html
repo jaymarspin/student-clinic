@@ -8,13 +8,19 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
-        <mat-tab label="Medicine Taken">
+      <button class="btn bg-btn btn-secondary" (click)="addMedicine()">Add Medicine</button>
+ 
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      
+  
           <table class="table">
             <thead class="thead-dark">
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Medicines/(dosage/Quantity)</th>
+                <th scope="col">Medicines/Quantity</th>
                 <th scope="col">Date</th>
                 <th scope="col">Description of the Incident</th>
                 <th scope="col">Action Taken</th>
@@ -25,7 +31,7 @@
                 <th scope="row">{{ i + 1 }}</th>
                 <td>
                   {{ medicine.inventories?.medicinename }}
-                  ({{ medicine.dosage?.dosage }}/{{ medicine.quantity }})
+                  ({{ medicine.quantity }})
                 </td>
                 <td>{{ medicine.date | dateTime }}</td>
                 <td>
@@ -37,45 +43,8 @@
               </tr>
             </tbody>
           </table>
-        </mat-tab>
-        <mat-tab label="Medicine List">
-          <table class="table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Medicine</th>
-                <th scope="col">Dosages/Stocks</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let inventory of inventories; index as i">
-                <th scope="row">{{ i + 1 }}</th>
-                <td>{{ inventory.medicinename }}</td>
-                <td>
-                  <span
-                    class="badge badge-primary me-1"
-                    *ngFor="
-                      let dosage of inventory.dosage;
-                      index as dosageIndex
-                    "
-                    >{{ dosage.dosage }}/{{ dosage?.stocks | stocks2 : inventory.medicinetaken : dosage.id }}</span
-                  >
-                </td>
-                <td>
-                  <button
-                  *ngIf="userToken.role !== 'user'"
-                    class="btn btn-secondary"
-                    (click)="addMedicine(inventory)"
-                  >
-                    Add Medicine
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </mat-tab>
-      </mat-tab-group>
+  
+   
     </div>
   </div>
   <div class="row mt-3">

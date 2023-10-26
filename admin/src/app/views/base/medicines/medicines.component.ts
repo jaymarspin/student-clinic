@@ -75,13 +75,13 @@ export class MedicinesComponent implements OnInit {
       }
     );
   }
-  async addMedicine(medicine: Inventories) {
+  async addMedicine() {
     let dialog2 = this.matdialog.open(AddMedicinesComponent, {
       width: '40%',
       height: '40%',
       data: {
         student: this.data,
-        medicine: medicine,
+  
       },
     });
     dialog2.afterClosed().subscribe(async (res) => {

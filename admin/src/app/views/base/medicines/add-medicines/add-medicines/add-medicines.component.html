@@ -8,22 +8,46 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <span
-        class="badge badge-primary me-1 mb-2"
-        *ngFor="let dosage of data.medicine.dosage; index as dosageIndex"
-        (click)="choosenMedicine = dosage"
-        >{{ dosage.dosage }}/{{
-          dosage?.stocks | stocks2 : data.medicine.medicinetaken : dosage.id
-        }}</span
-      >
-
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Medicine</th>
+            <th scope="col">Stocks</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let inventory of inventories; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ inventory.medicinename }}</td>
+            <td>
+              <span
+                class="badge badge-primary me-1"
+               
+                >{{ inventory.dosage![0]?.stocks | stocks2 : inventory.medicinetaken : inventory.dosage![0].id }}</span
+              >
+            </td>
+            <td>
+              <button
+              *ngIf="userToken.role !== 'user'"
+                class="btn btn-secondary"
+               (click)="getChoosenMedicines(inventory)"
+              >
+                Choose
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+    
+ 
       <div class="alert alert-secondary" *ngIf="choosenMedicine?.stocks">
-        <span
-          >Medicine: {{ choosenMedicine?.dosage }}/{{
-            choosenMedicine?.stocks
-              | stocks2 : data.medicine.medicinetaken : choosenMedicine!.id
-          }}</span
-        >
+    
         <div [cFormFloating]="true" class="mb-3">
           <input
             cFormControl
