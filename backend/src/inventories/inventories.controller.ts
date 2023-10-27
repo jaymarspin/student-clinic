@@ -32,12 +32,13 @@ export class InventoriesController {
     @Body('dosage') dosage: DosageEntity[],
     @Body('stocks') stocks: StocksEntity[],
     @Body('inventoryid') inventoryid?: any,
+    @Body('maxcount') maxcount?: any,
   ) {
     if (inventoryid) {
       const inventories: InventoriesEntity = new InventoriesEntity();
       inventories.id = inventoryid;
       const dos:DosageEntity = await this.dosagesService.create({ dosage, inventories: inventories });
-      return this.inventoriesService.create({ medicinename, indication });
+      return this.inventoriesService.create({ medicinename, indication,maxcount });
     } else {
       const inventories: InventoriesEntity = new InventoriesEntity();
       inventories.id = inventoryid;
@@ -45,6 +46,7 @@ export class InventoriesController {
       const inventory = await this.inventoriesService.create({
         medicinename,
         indication,
+        maxcount
       });
       if(dosage.length > 0){
         for (let index = 0; index < dosage.length; index++) {

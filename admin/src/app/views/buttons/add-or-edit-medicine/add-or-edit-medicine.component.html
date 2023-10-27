@@ -12,7 +12,7 @@
         <input
           cFormControl
           id="floatingInput"
-          placeholder="name@example.com"
+ 
           type="text"
           [(ngModel)]="inventories.medicinename"
         />
@@ -27,11 +27,28 @@
               [(ngModel)]="stocks"
               cFormControl
               id="floatingInput"
-              placeholder="name@example.com"
+ 
               type="number"
             />
 
             <label cLabel for="floatingInput">Stocks</label>
+          </div>
+        </div>
+        
+      </div>
+      <div class="row mb-1"  >
+        
+        <div class="col-12">
+          <div [cFormFloating]="true">
+            <input
+              [(ngModel)]="inventories.maxcount"
+              cFormControl
+              id="floatingInput"
+   
+              type="number"
+            />
+
+            <label cLabel for="floatingInput">Max Stocks</label>
           </div>
         </div>
         

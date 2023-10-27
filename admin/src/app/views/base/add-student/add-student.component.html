@@ -2,96 +2,108 @@
   <div class="row mt-5">
     <div class="col-12">
       <div class="alert alert-primary">
-        <span>{{data.edit ? 'Edit' : 'Add'}} Patients</span>
+        <span>{{ data.edit ? "Edit" : "Add" }} Patients</span>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
-       
-        <div [cFormFloating]="true" class="mb-3">
-          <input
-            cFormControl
-            id="floatingInput"
-            placeholder="name@example.com"
-            type="email"
-            [(ngModel)]="student.email"
-          />
-          <label cLabel for="floatingInput">Email Address</label>
-        </div>
-      
-        <div [cFormFloating]="true" class="mb-3">
-          <input
-            cFormControl
-            id="floatingInput" 
-            type="text"
-            [(ngModel)]="student.fullname"
-          />
-          <label cLabel for="floatingInput">Full Name</label>
-        </div>
+      <div [cFormFloating]="true" class="mb-3">
+        <input
+          cFormControl
+          id="floatingInput"
+          placeholder="name@example.com"
+          type="email"
+          [(ngModel)]="student.email"
+        />
+        <label cLabel for="floatingInput">Email Address</label>
+      </div>
 
-        <div [cFormFloating]="true" class="mb-3">
-          <input
-            cFormControl
-            id="floatingInput" 
-            type="text"
-            [(ngModel)]="student.emergencyContactNo"
-          />
-          <label cLabel for="floatingInput">In case of emergencies Contact No.</label>
-        </div>
+      <div [cFormFloating]="true" class="mb-3">
+        <input
+          cFormControl
+          id="floatingInput"
+          type="text"
+          [(ngModel)]="student.fullname"
+        />
+        <label cLabel for="floatingInput">Full Name</label>
+      </div>
 
-        <div [cFormFloating]="true" class="mb-3">
-          <input
-            cFormControl
-            id="floatingInput" 
-            type="date"
-            [(ngModel)]="student.date_added"
-          />
-          <label cLabel for="floatingInput">Date Added</label>
-        </div>
-        <div [cFormFloating]="true" class="mb-3">
-          <select
-            [(ngModel)]="student.grade"
-            aria-label="Default select example"
-            id="floatingInput"
-            cFormControl
-            cSelect
-            [cFormFloating]="true"
-            class="mb-3"
-          >
-       
-            <option value="grade 1">Grade 1</option>
-            <option value="grade 2">Grade 2</option>
-            <option value="grade 3">Grade 3</option>
-            <option value="grade 4">Grade 4</option>
-            <option value="grade 5">Grade 5</option>
-            <option value="grade 6">Grade 6</option>
-            <option value="grade 7">Grade 7</option>
-            <option value="grade 8">Grade 8</option>
-            <option value="grade 9">Grade 9</option>
-            <option value="grade 10">Grade 10</option>
-            <option value="grade 11">Grade 11</option>
-            <option value="grade 12">Grade 12</option>
-            <option value="faculty staff">Faculty Staff</option> 
-          </select>
-          <label cLabel for="floatingInput">Grade/Faculty Staff</label>
-        </div>
+      <div [cFormFloating]="true" class="mb-3">
+        <input
+          cFormControl
+          id="floatingInput"
+          type="text"
+          [(ngModel)]="student.emergencyContactNo"
+        />
+        <label cLabel for="floatingInput"
+          >In case of emergencies Contact No.</label
+        >
+      </div>
 
-        <div cFormFloating>
-          <label cLabel for="exampleFormControlTextarea1">Notes</label>
-          <textarea
-            [(ngModel)]="student.notes"
-            style="height: 100px"
-            cFormControl
-            id="exampleFormControlTextarea1"
-          ></textarea>
+      <div [cFormFloating]="true" class="mb-3">
+        <input
+          cFormControl
+          id="floatingInput"
+          type="date"
+          [(ngModel)]="student.date_added"
+        />
+        <label cLabel for="floatingInput">Date Added</label>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div [cFormFloating]="true" class="mb-3">
+            <select
+              [(ngModel)]="student.grade"
+              aria-label="Default select example"
+              id="floatingInput"
+              cFormControl
+              cSelect
+              [cFormFloating]="true"
+              class="mb-3"
+            >
+              <option value="Kinder 1">Kinder 1</option>
+              <option value="Kinder 2">Kinder 2</option>
+              <option value="Elementary">Elementary</option>
+              <option value="Junior High">Junior High</option>
+              <option value="Senior High">Senior High</option>
+              <option value="College">College</option>
+              <option value="Staff">Staff</option>
+            </select>
+            <label cLabel for="floatingInput">Role</label>
+          </div>
         </div>
- 
+        <div class="col-6">
+          
+      <div [cFormFloating]="true" class="mb-3">
+        <input
+        cFormControl
+        id="floatingInput"
+        type="text"
+        [(ngModel)]="student.graderole"
+      />
+      <label cLabel for="floatingInput">Plase Specify</label>
+      </div>
+          
+        </div>
+      </div>
+
+      <div cFormFloating>
+        <label cLabel for="exampleFormControlTextarea1">Notes</label>
+        <textarea
+          [(ngModel)]="student.notes"
+          style="height: 100px"
+          cFormControl
+          id="exampleFormControlTextarea1"
+        ></textarea>
+      </div>
     </div>
   </div>
   <div class="row mt-3">
     <div class="col-12">
-      <button class="btn btn-primary me-1" (click)="data.edit ? edit(): add()">Submit</button>
+      <button class="btn btn-primary me-1" (click)="data.edit ? edit() : add()">
+        Submit
+      </button>
       <button class="btn btn-danger" (click)="close()">Close</button>
     </div>
   </div>

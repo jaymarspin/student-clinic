@@ -17,7 +17,8 @@ export class AddStudentComponent implements OnInit{
     grade: '',
     notes: '',
     emergencyContactNo: '',
-    date_added: null
+    date_added: null,
+    graderole: ''
   };
   constructor(
     private spinner: NgxSpinnerService,
@@ -41,6 +42,7 @@ export class AddStudentComponent implements OnInit{
 
     await this.spinner.show();
     const userToken: UserToken = await this.auth.init();
+    console.log(this.student)
     this.studentService
       .addStudent(this.student, userToken.token)
       .subscribe((response) => { 

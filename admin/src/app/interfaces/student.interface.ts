@@ -8,7 +8,8 @@ export interface Student {
     updated_at?: string;
     id?: number;
     emergencyContactNo: string
-    date_added: any
+    date_added: any;
+    graderole?: string
    
   }
 

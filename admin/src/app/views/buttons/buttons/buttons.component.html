@@ -16,7 +16,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Medicine</th>
-          <th scope="col">Stocks</th>
+          <th scope="col">Stocks/Max Stocks</th>
           <th>Actions</th>
         </tr>
       </thead>
@@ -28,7 +28,7 @@
             <span>{{
               inventory.dosage![0]?.stocks
                 | stocks : inventory.medicinetaken : inventory.dosage![0].id
-            }}</span>
+            }}</span>/{{inventory.maxcount ?? 'Not yet Specified'}}
           </td>
           <td>
             <button

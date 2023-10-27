@@ -26,6 +26,7 @@ export class StudentsController {
     @Body('emergencyContactNo') emergencyContactNo: string,
     @Body('date_added') date_added: string,
     @Body('notes') notes: string,
+    @Body('graderole') graderole: string,
   ) {
     return this.studentsService.create({
       fullname,
@@ -35,6 +36,7 @@ export class StudentsController {
       emergencyContactNo,
       date_added,
       notes,
+      graderole
     });
   }
 

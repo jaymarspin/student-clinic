@@ -22,6 +22,7 @@ export class AddOrEditMedicineComponent implements OnInit {
   inventories: Inventories = {
     medicinename: '',
     indication: '',
+    maxcount: 0,
     stocks: [],
     dosage: [],
   };

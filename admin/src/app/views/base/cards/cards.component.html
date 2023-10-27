@@ -19,10 +19,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let student of students; index as i">
-          <th scope="row">{{(i + 1)}}</th>
+          <th scope="row">{{(i + 1  )}}</th>
           <td>{{ student.fullname }}</td>
           <td>{{ student.email }}</td>
-          <td>{{ student.grade }}</td>
+          <td>{{ student.grade }}/{{student.graderole}}</td>
           <td>{{ student.emergencyContactNo }}</td>
           <td>{{ student.date_added | momentjs2 }}</td>
           <td>

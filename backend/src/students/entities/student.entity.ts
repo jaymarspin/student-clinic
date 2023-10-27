@@ -53,6 +53,13 @@ import {
       nullable: false,
     })
     grade: string;
+
+      
+    @Column({
+      type: 'varchar',
+      nullable: false,
+    })
+    graderole: string;
    
     @Column({ default: true })
     isActive: boolean;
