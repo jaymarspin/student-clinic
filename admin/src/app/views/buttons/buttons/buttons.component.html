@@ -25,13 +25,10 @@
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ inventory.medicinename }}</td>
           <td>
-         
-
-            <span
-           
-               
-                >{{ inventory.dosage![0]?.stocks | stocks : inventory.medicinetaken : inventory.dosage![0].id }}</span
-              >
+            <span>{{
+              inventory.dosage![0]?.stocks
+                | stocks : inventory.medicinetaken : inventory.dosage![0].id
+            }}</span>
           </td>
           <td>
             <button
