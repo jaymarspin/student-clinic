@@ -11,7 +11,7 @@
           <th scope="col">#</th>
           <th scope="col">Full Name</th>
           <th scope="col">Email</th>
-          <th scope="col">Role</th>
+          <th scope="col">Grade-Year/Personel</th>
           <th scope="col">In Case of Emergencies</th>
           <th scope="col">Date Added</th>
           <th>Actions</th>
@@ -22,7 +22,7 @@
           <th scope="row">{{(i + 1  )}}</th>
           <td>{{ student.fullname }}</td>
           <td>{{ student.email }}</td>
-          <td>{{ student.grade }}/{{student.graderole}}</td>
+          <td>{{ student.grade }}: {{student.graderole}}</td>
           <td>{{ student.emergencyContactNo }}</td>
           <td>{{ student.date_added | momentjs2 }}</td>
           <td>
@@ -32,8 +32,11 @@
             <button *ngIf="userToken.role !== 'user'" class="btn btn-secondary me-1 mb-1" (click)="editStudent(student)">
               Edit
             </button>
-            <button class="btn btn-secondary" (click)="viewMedicines(student)">
+            <button class="btn btn-secondary me-1 mb-1" (click)="viewMedicines(student)">
               Medicines
+            </button>
+            <button class="btn btn-primary me-1 mb-1" (click)="openInjuries(student)">
+              Injuries
             </button>
           </td>
         </tr>

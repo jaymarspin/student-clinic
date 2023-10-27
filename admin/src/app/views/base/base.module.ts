@@ -59,6 +59,7 @@ import {Momentjs2Pipe} from '../../pipes/momentjs2.pipe'
 import { Stocks2Pipe } from 'src/app/pipes/stocks2/stocks2.pipe';
 import { AddMedicinesComponent } from './medicines/add-medicines/add-medicines/add-medicines.component';
 import { DateTimePipe } from 'src/app/pipes/dateTime/date-time.pipe';
+import { AddOrEditInjuriesComponent } from './add-or-edit-injuries/add-or-edit-injuries.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -114,7 +115,7 @@ import { DateTimePipe } from 'src/app/pipes/dateTime/date-time.pipe';
     AddStudentComponent,
     MedicinesComponent,
     AddMedicinesComponent, 
-    DateTimePipe
+    DateTimePipe, AddOrEditInjuriesComponent
   ],
 })
 export class BaseModule {}
