@@ -8,8 +8,8 @@ import {deleteReponse}from 'src/app/interfaces/deleteresponse.interface';
   providedIn: 'root',
 })
 export class StudentService {
-  server = 'http://localhost:3005/';
-  // server = 'http://3.25.145.56:3005/';
+  // server = 'http://localhost:3005/';
+  server = 'http://3.25.145.56:3005/';
   user: any;
   constructor(private http: HttpClient) {}
 
