@@ -23,7 +23,7 @@
             <td>{{ inventory.medicinename }}</td>
             <td>
               <span
-                class="badge badge-primary me-1"
+    
                
                 >{{ inventory.dosage![0]?.stocks | stocks2 : inventory.medicinetaken : inventory.dosage![0].id }}</span
               >
@@ -42,6 +42,13 @@
       </table>
     </div>
   </div>
+  <div class="row" *ngIf="c">
+    <div class="col-12">
+      <div class="alert alert-success" role="alert">
+      {{c.medicinename}}
+      </div>
+      </div>
+      </div>
   <div class="row">
     <div class="col-12">
     

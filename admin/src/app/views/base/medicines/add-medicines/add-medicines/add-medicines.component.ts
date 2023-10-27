@@ -21,6 +21,7 @@ export class AddMedicinesComponent implements OnInit {
   choosenMedicine: Dosage  ={
     dosage: ''
   };
+  c!: Inventories
 
   medicineData: medicineData = {
     description: '',
@@ -69,6 +70,8 @@ export class AddMedicinesComponent implements OnInit {
   getChoosenMedicines(med: Inventories){
     this.medicineData.inventoriesVal = med.id
     this.choosenMedicine = med.dosage![0]
+this.c = med
+ 
   }
 
   async addMedicine() {

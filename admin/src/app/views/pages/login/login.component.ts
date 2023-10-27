@@ -65,4 +65,11 @@ export class LoginComponent {
     this.cookieService.set('user', res.user);
     this.cookieService.set('role', res.role);
   }
+
+  loginEnter(event: any){
+ 
+    if(event.keyCode === 13){
+      this.login()
+    }
+  }
 }

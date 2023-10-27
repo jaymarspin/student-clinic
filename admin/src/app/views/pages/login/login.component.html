@@ -40,6 +40,7 @@
                   autoComplete="username"
                   cFormControl
                   placeholder="Username"
+                  (keyup)="loginEnter($event)"
                 />
               </c-input-group>
               <c-input-group class="mb-4">
@@ -53,6 +54,7 @@
                   class="text-input-bg-gray"
                   placeholder="Password"
                   type="password"
+                  (keyup)="loginEnter($event)"
                 />
               </c-input-group>
               <c-row>
