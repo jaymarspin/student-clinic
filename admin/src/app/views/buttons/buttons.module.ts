@@ -7,7 +7,7 @@ import { ButtonsComponent } from './buttons/buttons.component';
 import { ButtonGroupsComponent } from './button-groups/button-groups.component';
 import { DropdownsComponent } from './dropdowns/dropdowns.component';
 
-import { ButtonsRoutingModule } from './buttons-routing.module'; 
+import { ButtonsRoutingModule } from './buttons-routing.module';
 import {
   ButtonGroupModule,
   ButtonModule,
@@ -19,20 +19,25 @@ import {
   NavbarModule,
   NavModule,
   SharedModule,
-  UtilitiesModule
+  UtilitiesModule,
 } from '@coreui/angular';
 
 import { IconModule } from '@coreui/icons-angular';
 import { AddOrEditMedicineComponent } from './add-or-edit-medicine/add-or-edit-medicine.component';
-import { AddStocksComponent } from './add-stocks/add-stocks.component'; 
+import { AddStocksComponent } from './add-stocks/add-stocks.component';
 import { StocksPipe } from 'src/app/pipes/stocks/stocks.pipe';
-import {StocksGetPipe}from 'src/app/pipes/stocksGet/stocks-get.pipe';
+import { StocksGetPipe } from 'src/app/pipes/stocksGet/stocks-get.pipe';
+import { CountStocksPipe } from 'src/app/pipes/count-stocks/count-stocks.pipe';
 @NgModule({
   declarations: [
     ButtonsComponent,
-    ButtonGroupsComponent, 
+    ButtonGroupsComponent,
     StocksGetPipe,
-    DropdownsComponent, AddOrEditMedicineComponent, AddStocksComponent,StocksPipe
+    DropdownsComponent,
+    AddOrEditMedicineComponent,
+    AddStocksComponent,
+    StocksPipe,
+    CountStocksPipe,
   ],
   imports: [
     CommonModule,
@@ -52,8 +57,7 @@ import {StocksGetPipe}from 'src/app/pipes/stocksGet/stocks-get.pipe';
     NavbarModule,
     CollapseModule,
     NavModule,
-    NavbarModule
-  ]
+    NavbarModule,
+  ],
 })
-export class ButtonsModule {
-}
+export class ButtonsModule {}

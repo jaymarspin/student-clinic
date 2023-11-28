@@ -1,6 +1,5 @@
 export interface Inventories {
-    medicinename: string;
-    maxcount?: number;
+    medicinename: string; 
     indication: string;
     created_at?: string;
     updated_at?: string;

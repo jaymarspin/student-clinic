@@ -40,7 +40,8 @@ import {
 import { IconModule, IconSetService } from '@coreui/icons-angular';
 import { NgxSpinnerModule } from 'ngx-spinner'; 
 import { HttpClientModule,HttpClient } from '@angular/common/http'; 
-import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt'; 
+import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
+ 
 const APP_CONTAINERS = [
   DefaultFooterComponent,
   DefaultHeaderComponent,

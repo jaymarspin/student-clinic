@@ -21,8 +21,7 @@ export class InventoriesEntity {
   @Column({ nullable: true })
   indication: string;
 
-  @Column({ nullable: true })
-  maxcount?: number;
+ 
 
   @Column({ default: true })
   isActive: boolean;

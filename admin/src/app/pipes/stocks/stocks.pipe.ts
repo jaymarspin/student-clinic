@@ -5,7 +5,7 @@ import * as _ from 'lodash';
   name: 'stocks',
 })
 export class StocksPipe implements PipeTransform {
-  transform(stocks: Stocks[], taken?: any, dosageId?: number): unknown {
+  transform(stocks: Stocks[], taken?: any, dosageId?: number): number {
     let tmp = 0;
     let minus = 0;
 

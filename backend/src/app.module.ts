@@ -10,6 +10,7 @@ import { InventoriesModule } from './inventories/inventories.module';
 import { DosagesModule } from './dosages/dosages.module';
 import { StocksModule } from './stocks/stocks.module';
 import { MedicineTakenModule } from './medicine-taken/medicine-taken.module';
+import { InjuryModule } from './injury/injury.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -32,6 +33,7 @@ import { MedicineTakenModule } from './medicine-taken/medicine-taken.module';
     DosagesModule,
     StocksModule,
     MedicineTakenModule,
+    InjuryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

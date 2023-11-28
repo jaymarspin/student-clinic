@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { User, UserLogin, UserToken } from '../../interfaces/user.interface';
+import { map } from 'rxjs/operators'; 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Student } from 'src/app/interfaces/student.interface';
 import {deleteReponse}from 'src/app/interfaces/deleteresponse.interface';
@@ -8,8 +7,8 @@ import {deleteReponse}from 'src/app/interfaces/deleteresponse.interface';
   providedIn: 'root',
 })
 export class StudentService {
-  // server = 'http://localhost:3005/'; 
-  server = 'http://3.25.145.56:3005/';
+  server = 'http://localhost:3005/'; 
+  // server = 'http://3.25.145.56:3005/';
   user: any;
   constructor(private http: HttpClient) {}
 

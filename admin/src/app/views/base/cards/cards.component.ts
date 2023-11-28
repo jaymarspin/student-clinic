@@ -191,15 +191,7 @@ export class CardsComponent implements OnInit {
       data: student,
     });
     dialog.afterClosed().subscribe(async (res) => {
-      if (res === true) {
-        await Swal.fire({
-          icon: 'success',
-          title: 'Locations Successfully added',
-          showConfirmButton: false,
-          timer: 3500,
-          backdrop: false,
-        });
-      }
+      
     });
   }
 }

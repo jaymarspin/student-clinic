@@ -18,7 +18,7 @@ export class AddStudentComponent implements OnInit{
     notes: '',
     emergencyContactNo: '',
     date_added: null,
-    graderole: ''
+    graderole: '', 
   };
   constructor(
     private spinner: NgxSpinnerService,

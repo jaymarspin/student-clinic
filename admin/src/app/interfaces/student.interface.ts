@@ -1,4 +1,5 @@
 export interface Student {
+ 
     fullname: string;
     email: string;
     grade: string;

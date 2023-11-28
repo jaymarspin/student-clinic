@@ -53,10 +53,11 @@
                   cFormControl
                   class="text-input-bg-gray"
                   placeholder="Password"
-                  type="password"
+                  [type]="showPass"
                   (keyup)="loginEnter($event)"
                 />
               </c-input-group>
+          
               <c-row>
                 <c-col xs="6">
                   <button

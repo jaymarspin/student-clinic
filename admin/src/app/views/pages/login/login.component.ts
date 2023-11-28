@@ -16,6 +16,7 @@ export class LoginComponent {
     username: '',
     password: '',
   };
+  showPass: string = 'password'
   constructor(
     private spinner: NgxSpinnerService,
     private router: Router,
@@ -71,5 +72,8 @@ export class LoginComponent {
     if(event.keyCode === 13){
       this.login()
     }
+  }
+  toggleShowPass(){
+    this.showPass === 'password' ? 'text' : 'password'
   }
 }
