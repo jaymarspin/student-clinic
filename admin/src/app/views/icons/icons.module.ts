@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CardModule, GridModule } from '@coreui/angular';
+import { CardModule, GridModule, SharedModule } from '@coreui/angular';
 import { IconModule } from '@coreui/icons-angular';
 
 import { CoreUIIconsComponent } from './coreui-icons.component';
 import { IconsRoutingModule } from './icons-routing.module';
 import { DocsComponentsModule } from '@docs-components/docs-components.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -15,7 +16,9 @@ import { DocsComponentsModule } from '@docs-components/docs-components.module';
     GridModule,
     IconModule,
     CommonModule,
-    DocsComponentsModule
+    DocsComponentsModule,
+    SharedModule,
+    FormsModule
   ],
   declarations: [
     CoreUIIconsComponent

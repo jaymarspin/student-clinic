@@ -2,9 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { CreateMedicineTakenDto } from './dto/create-medicine-taken.dto';
 import { UpdateMedicineTakenDto } from './dto/update-medicine-taken.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 import { MedicineTakenEntity } from './entities/medicine-taken.entity';
 import { StudentEntity } from 'src/students/entities/student.entity';
+import * as moment from "moment";
 
 @Injectable()
 export class MedicineTakenService {
@@ -22,6 +23,29 @@ export class MedicineTakenService {
 
   findOne(id: number) {
     return this.medicineTake.findOneBy({ id: id });
+  }
+
+  
+  findAllOutcoming(startDate, endDate) {
+    console.log(startDate),
+    console.log(endDate)
+    startDate = moment(startDate).subtract(1, 'seconds').format();
+    endDate = moment(endDate).add(1, 'seconds').format();
+ 
+
+    return this.medicineTake.find({
+      relations: [
+        'inventories',
+        'student'
+      ],
+      where: {
+        created_at: Between(startDate, endDate),
+        
+      },
+      order: {
+        created_at: 'desc',
+      },
+    });
   }
 
   findByStudent(id: number) {

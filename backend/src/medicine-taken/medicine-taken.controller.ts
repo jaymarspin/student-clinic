@@ -54,6 +54,12 @@ export class MedicineTakenController {
   findAll() {
     return this.medicineTakenService.findAll();
   }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('outcoming')
+  findOutcoming(@Body('startDate') startDate, @Body('endDate') endDate) {
+    return this.medicineTakenService.findAllOutcoming(startDate, endDate);
+  }
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   findOne(@Param('id') id: number) {

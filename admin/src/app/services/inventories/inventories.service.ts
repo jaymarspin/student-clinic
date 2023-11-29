@@ -105,4 +105,26 @@ export class InventoriesService {
       .pipe(map((response) => response as any[]));
   }
 
+  public reportIncoming(startDate: any, endDate: any,token: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http
+      .post(`${this.server}stocks/incoming`,{startDate,endDate}, httpOptions)
+      .pipe(map((response) => response as any[]));
+  }
+
+  public reportOutcoming(startDate: any, endDate: any,token: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http
+      .post(`${this.server}medicine-taken/outcoming`,{startDate,endDate}, httpOptions)
+      .pipe(map((response) => response as any[]));
+  }
+
 }

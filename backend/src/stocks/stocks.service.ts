@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common'; 
 import { UpdateStockDto } from './dto/update-stock.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 import { StocksEntity } from './entities/stock.entity';
+import * as moment from "moment";
+ 
 
 @Injectable()
 export class StocksService {
@@ -12,6 +14,29 @@ export class StocksService {
   ) {}
   create(stocks:StocksEntity) {
     return this.stocks.save(stocks);
+  }
+
+
+  findAllIncoming(startDate, endDate) {
+    console.log(startDate),
+    console.log(endDate)
+    startDate = moment(startDate).subtract(1, 'seconds').format();
+    endDate = moment(endDate).add(1, 'seconds').format();
+ 
+
+    return this.stocks.find({
+      relations: [
+        'dosage',
+        'dosage.inventories',
+      ],
+      where: {
+        created_at: Between(startDate, endDate),
+        
+      },
+      order: {
+        created_at: 'desc',
+      },
+    });
   }
 
   findAll() {
