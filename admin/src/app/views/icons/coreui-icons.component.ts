@@ -94,7 +94,7 @@ export class CoreUIIconsComponent implements OnInit {
             { width: objectMaxLength[2] },
           ];
           worksheet['!cols'] = wscols;
-          writeFileXLSX(workbook, ` adwdwad.xlsx`, { compression: false });
+          writeFileXLSX(workbook, ` report.xlsx`, { compression: false });
           this.spinner.hide();
         },
         error: (err) => {
