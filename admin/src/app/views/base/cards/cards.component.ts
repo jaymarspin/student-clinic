@@ -89,9 +89,7 @@ export class CardsComponent implements OnInit {
       if(e.target.value !== '') {
         this.students = new Array<Student>();
         const fuse = new Fuse(this.studentLoad, options)
-
-        const tmp = fuse.search(e.target.value)
-        console.log(tmp)
+        const tmp = fuse.search(e.target.value);
   
         for (let index = 0; index < tmp.length; index++) {
              this.students.push(tmp[index].item)
