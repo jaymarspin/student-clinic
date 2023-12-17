@@ -54,6 +54,9 @@ export class StudentsController {
   update(@Param('id') id: string, @Body() student: StudentEntity) {
     return this.studentsService.update(+id, student);
   }
+
+
+  
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {

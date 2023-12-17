@@ -27,12 +27,8 @@ export class MedicineTakenService {
 
   
   findAllOutcoming(startDate, endDate) {
-    console.log(startDate),
-    console.log(endDate)
     startDate = moment(startDate).subtract(1, 'seconds').format();
     endDate = moment(endDate).add(1, 'seconds').format();
- 
-
     return this.medicineTake.find({
       relations: [
         'inventories',
@@ -40,7 +36,6 @@ export class MedicineTakenService {
       ],
       where: {
         created_at: Between(startDate, endDate),
-        
       },
       order: {
         created_at: 'desc',

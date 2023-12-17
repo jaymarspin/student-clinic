@@ -17,7 +17,9 @@ export class StudentsService {
   }
 
   findAll() {
-    return this.students.find({order: {fullname: 'ASC'}});
+    return this.students.find({order: {fullname: 'ASC'},where:{
+      deleted: false
+    }});
   }
 
   findOne(id: number) {
@@ -30,6 +32,7 @@ export class StudentsService {
   }
 
   remove(id: number) {
-    return this.students.delete({id});
+    console.log(id)
+    return this.students.update({id},{deleted: true});
   }
 }

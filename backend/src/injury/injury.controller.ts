@@ -48,6 +48,12 @@ export class InjuryController {
     return this.injuryService.update(+id, updateInjuryDto);
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Post('report')
+  findOutcoming(@Body('startDate') startDate, @Body('endDate') endDate) {
+    return this.injuryService.report(startDate, endDate);
+  }
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.injuryService.remove(+id);

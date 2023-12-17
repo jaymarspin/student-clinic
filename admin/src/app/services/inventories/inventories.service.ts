@@ -8,8 +8,8 @@ import { deleteReponse } from 'src/app/interfaces/deleteresponse.interface';
   providedIn: 'root'
 })
 export class InventoriesService {
-  // server = 'http://localhost:3005/';
-  server = 'http://3.25.145.56:3005/';
+  server = 'http://localhost:3005/';
+  // server = 'http://3.25.145.56:3005/';
   user: any;
   constructor(private http: HttpClient) {}
   
@@ -126,5 +126,19 @@ export class InventoriesService {
       .post(`${this.server}medicine-taken/outcoming`,{startDate,endDate}, httpOptions)
       .pipe(map((response) => response as any[]));
   }
+
+  public injuriesReport(startDate: any, endDate: any,token: string) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        authorization: `Bearer ${token}`,
+      }),
+    };
+    return this.http
+      .post(`${this.server}injury/report`,{startDate,endDate}, httpOptions)
+      .pipe(map((response) => response as any[]));
+  }
+
+
+  
 
 }

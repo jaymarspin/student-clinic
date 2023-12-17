@@ -2,40 +2,70 @@
   <div class="row">
     <div class="col-3"></div>
     <div class="col-6">
-  
       <div class="row">
         <div class="col-12">
-          <div class="form-group" style="width: 100%;">
-            <label for="exampleFormControlSelect2">Example multiple select</label>
-            <select class="form-control" [(ngModel)]="type"id="exampleFormControlSelect2">
-              <option value="Medicine Stocks Incoming">Medicine Stocks Incoming</option>
-              <option value="Medicine stocks Outgoing">Medicine stocks Outgoing</option>
-
-              
+          <div class="form-group" style="width: 100%">
+            <label for="exampleFormControlSelect2"
+              >Example multiple select</label
+            >
+            <select
+              class="form-control"
+              [(ngModel)]="type"
+              id="exampleFormControlSelect2"
+            >
+              <option value="Medicine Stocks Incoming">
+                Medicine Stocks Incoming
+              </option>
+              <option value="Medicine stocks Outgoing">
+                Medicine stocks Outgoing
+                
+              </option>
+              <option value="Injuries">
+                Injuries
+              </option>
             </select>
           </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-6"><div  class="mb-3">
-          
-          <div class="form-group">
-            <label for="exampleInputEmail1">Start Date</label>
-            <input [(ngModel)]="startDate" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> 
-          </div>
-        </div></div>
         <div class="col-6">
-
+          <div class="mb-3">
+            <div class="form-group">
+              <label for="exampleInputEmail1">Start Date</label>
+              <input
+                [(ngModel)]="startDate"
+                type="date"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-6">
           <div class="form-group">
             <label for="exampleInputEmail1">End Date</label>
-            <input [(ngModel)]="endDate" type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> 
+            <input
+              [(ngModel)]="endDate"
+              type="date"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12">
-          <button class="btn btn-primary" (click)="type === 'Medicine Stocks Incoming' ? viewReportIncoming() : viewReportOutcoming()">View Report</button>
+          <button
+            class="btn btn-primary"
+            (click)=" viewReport()"
+          >
+            View Report
+          </button>
         </div>
       </div>
     </div>

@@ -18,8 +18,6 @@ export class StocksService {
 
 
   findAllIncoming(startDate, endDate) {
-    console.log(startDate),
-    console.log(endDate)
     startDate = moment(startDate).subtract(1, 'seconds').format();
     endDate = moment(endDate).add(1, 'seconds').format();
  

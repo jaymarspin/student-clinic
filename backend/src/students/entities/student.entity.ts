@@ -60,6 +60,12 @@ import {
       nullable: false,
     })
     graderole: string;
+
+
+    @Column({ default: false })
+    deleted: boolean;
+
+    
    
     @Column({ default: true })
     isActive: boolean;

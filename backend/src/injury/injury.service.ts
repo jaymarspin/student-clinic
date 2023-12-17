@@ -2,9 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { CreateInjuryDto } from './dto/create-injury.dto';
 import { UpdateInjuryDto } from './dto/update-injury.dto';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Between, Repository } from 'typeorm';
 import { InjuryEntity } from './entities/injury.entity';
 import { StudentEntity } from 'src/students/entities/student.entity';
+import * as moment from "moment";
 
 @Injectable()
 export class InjuryService {
@@ -40,5 +41,21 @@ export class InjuryService {
 
   remove(id: number) {
     return `This action removes a #${id} injury`;
+  }
+
+  report(startDate, endDate){
+    startDate = moment(startDate).subtract(1, 'seconds').format();
+    endDate = moment(endDate).add(1, 'seconds').format();
+    return this.Injury.find({
+      relations: [ 
+        'student'
+      ],
+      where: {
+        created_at: Between(startDate, endDate),
+      },
+      order: {
+        created_at: 'desc',
+      },
+    });
   }
 }

@@ -9,6 +9,7 @@ import { UserToken } from 'src/app/interfaces/user.interface';
 import * as moment from 'moment';
 import { InventoriesService } from 'src/app/services/inventories/inventories.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+
 @Component({
   templateUrl: 'coreui-icons.component.html',
   providers: [IconSetService],
@@ -159,6 +160,83 @@ export class CoreUIIconsComponent implements OnInit {
           ];
           worksheet['!cols'] = wscols;
           writeFileXLSX(workbook, ` adwdwad.xlsx`, { compression: false });
+          this.spinner.hide();
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
+  }
+
+
+  viewReport(){
+    alert(this.type)
+    if(this.type === 'Medicine Stocks Incoming'){
+      this.viewReportIncoming()
+    }else if(this.type === 'Medicine stocks Outgoing'){
+      this.viewReportOutcoming()
+    }else if(this.type === 'Injuries'){
+      this.injuriesReport()
+    }
+  }
+
+
+  async injuriesReport() {
+ 
+    await this.spinner.show();
+    this.inventoriesSrvc
+      .injuriesReport(this.startDate, this.endDate, this.userToken.token)
+      .subscribe({
+        next: (res) => {
+          this.export = res; 
+          console.log(res)
+          this.salesExportExcel = this.export.map((data) => {
+            return {
+              description: data.description,
+
+              action: data.action,
+              date: data.date ?? '',
+              student: data.student.fullname
+            } as any;
+          });
+          const worksheet = utils.json_to_sheet<any>(this.salesExportExcel);
+          const workbook = utils.book_new();
+          utils.book_append_sheet(workbook, worksheet);
+          utils.aoa_to_sheet([
+            [
+              {
+                name: `report.xlsx`,
+              },
+            ],
+          ]);
+
+          utils.sheet_add_aoa(
+            worksheet,
+            [['Description', 'Action', 'Date Admitted','Student']],
+            { origin: 'A1' }
+          );
+          let objectMaxLength: any[] = [];
+          for (let i = 0; i < this.salesExportExcel.length; i++) {
+            let value = <any>Object.values(this.salesExportExcel[i]);
+            for (let j = 0; j < value.length; j++) {
+              if (typeof value[j] == 'number') {
+                objectMaxLength[j] = 10;
+              } else {
+                objectMaxLength[j] =
+                  objectMaxLength[j] >= value[j].length
+                    ? objectMaxLength[j]
+                    : value[j].length;
+              }
+            }
+          }
+          var wscols = [
+            { width: objectMaxLength[0] },
+            { width: objectMaxLength[1] },
+            { width: objectMaxLength[2] },
+            { width: objectMaxLength[3] },
+          ];
+          worksheet['!cols'] = wscols;
+          writeFileXLSX(workbook, ` Report.xlsx`, { compression: false });
           this.spinner.hide();
         },
         error: (err) => {
