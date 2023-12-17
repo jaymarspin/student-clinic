@@ -12,7 +12,8 @@ import {
 } from 'src/app/interfaces/student.interface';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { AddOrEditInjuriesComponent } from '../add-or-edit-injuries/add-or-edit-injuries.component';
-
+import * as _ from 'lodash'  
+import Fuse from 'fuse.js'
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
@@ -26,6 +27,8 @@ export class CardsComponent implements OnInit {
     role: '',
   };
   students: Student[] = new Array<Student>();
+  studentLoad: Student[] = new Array<Student>();
+
   constructor(
     public matdialog: MatDialog,
     private auth: AuthService,
@@ -72,6 +75,30 @@ export class CardsComponent implements OnInit {
             });
           }
         );
+    }
+  }
+
+  search(e:any){
+    const options = {
+      includeScore: true,
+      useExtendedSearch: true,
+      keys: ['fullname','email']
+    }
+    if(e.key === 'Enter'){
+
+      if(e.target.value !== '') {
+        this.students = new Array<Student>();
+        const fuse = new Fuse(this.studentLoad, options)
+
+        const tmp = fuse.search(e.target.value)
+        console.log(tmp)
+  
+        for (let index = 0; index < tmp.length; index++) {
+             this.students.push(tmp[index].item)
+        }
+      }else{
+        this.students = _.cloneDeep(this.studentLoad)
+      }      
     }
   }
 
@@ -150,6 +177,8 @@ export class CardsComponent implements OnInit {
       async (response) => {
         await this.spinner.hide();
         this.students = response;
+
+        this.studentLoad = _.cloneDeep(response)
         console.log(this.students);
       },
       async (err) => {
