@@ -33,12 +33,13 @@ import {
     @Column({
       type: 'varchar',
       nullable: false,
+      unique: true
     })
     email: string;
 
     @Column({
       
-      nullable: false,
+      nullable: true,
     })
     notes: string;
   

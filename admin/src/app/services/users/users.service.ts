@@ -8,8 +8,8 @@ import { deleteReponse } from 'src/app/interfaces/deleteresponse.interface';
 })
 export class UsersService {
   
-  // server = 'http://localhost:3005/';
-  server = 'http://3.25.145.56:3005/';
+  server = 'http://localhost:3005/';
+  // server = 'http://3.25.145.56:3005/';
   user: any;
   constructor(private http: HttpClient) {}
 
@@ -23,6 +23,8 @@ export class UsersService {
       .post(`${this.server}users`, data, httpOptions)
       .pipe(map((response) => response as User));
   }
+
+  
   public updateUser(data: User, token: any) {
     const httpOptions = {
       headers: new HttpHeaders({

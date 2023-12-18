@@ -26,6 +26,9 @@ export class InventoriesEntity {
   @Column({ default: true })
   isActive: boolean;
 
+  @Column({ default: false })
+  deleted: boolean;
+
   @Column({ type: 'json', nullable: true })
   extra: any;
 

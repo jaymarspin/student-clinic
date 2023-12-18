@@ -48,7 +48,7 @@
           type="date"
           [(ngModel)]="student.date_added"
         />
-        <label cLabel for="floatingInput">Date Added</label>
+        <label cLabel for="floatingInput">Date Encoded</label>
       </div>
       <div class="row">
         <div class="col-6">
@@ -82,21 +82,13 @@
         type="text"
         [(ngModel)]="student.graderole"
       />
-      <label cLabel for="floatingInput">Plase Specify</label>
+      <label cLabel for="floatingInput">Please Specify</label>
       </div>
           
         </div>
       </div>
 
-      <div cFormFloating>
-        <label cLabel for="exampleFormControlTextarea1">Notes</label>
-        <textarea
-          [(ngModel)]="student.notes"
-          style="height: 100px"
-          cFormControl
-          id="exampleFormControlTextarea1"
-        ></textarea>
-      </div>
+ 
     </div>
   </div>
   <div class="row mt-3">

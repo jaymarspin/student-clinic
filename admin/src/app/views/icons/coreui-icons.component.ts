@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { IconSetService } from '@coreui/icons-angular';
-import { brandSet, flagSet, freeSet } from '@coreui/icons';
+import { IconSetService } from '@coreui/icons-angular'; 
 import { NgxSpinnerService } from 'ngx-spinner';
 import { utils, writeFileXLSX } from 'xlsx';
 import { UserToken } from 'src/app/interfaces/user.interface';
@@ -65,7 +64,7 @@ export class CoreUIIconsComponent implements OnInit {
           utils.aoa_to_sheet([
             [
               {
-                name: `report.xlsx`,
+                name: `Report(Stock in) ${this.startDate} - ${this.endDate}.xlsx`,
               },
             ],
           ]);
@@ -95,7 +94,7 @@ export class CoreUIIconsComponent implements OnInit {
             { width: objectMaxLength[2] },
           ];
           worksheet['!cols'] = wscols;
-          writeFileXLSX(workbook, ` report.xlsx`, { compression: false });
+          writeFileXLSX(workbook, `Report(Stock in) ${this.startDate} - ${this.endDate}.xlsx`, { compression: false });
           this.spinner.hide();
         },
         error: (err) => {
@@ -119,7 +118,9 @@ export class CoreUIIconsComponent implements OnInit {
 
               medicine: data.inventories.medicinename,
               created_at: data.created_at,
-              student: data.student.fullname
+              student: data.student.fullname,
+              email: data.student.email,
+              grade: data.student.grade
             } as any;
           });
           const worksheet = utils.json_to_sheet<any>(this.salesExportExcel);
@@ -128,14 +129,14 @@ export class CoreUIIconsComponent implements OnInit {
           utils.aoa_to_sheet([
             [
               {
-                name: `report.xlsx`,
+                name: `Report(Medicines) ${this.startDate} - ${this.endDate}.xlsx`,
               },
             ],
           ]);
 
           utils.sheet_add_aoa(
             worksheet,
-            [['Outcoming Stocks', 'Medicine', 'Date','Student']],
+            [['Outcoming Stocks', 'Medicine', 'Date','Patient','Email','Grade-Year/Personel']],
             { origin: 'A1' }
           );
           let objectMaxLength: any[] = [];
@@ -157,9 +158,11 @@ export class CoreUIIconsComponent implements OnInit {
             { width: objectMaxLength[1] },
             { width: objectMaxLength[2] },
             { width: objectMaxLength[3] },
+            { width: objectMaxLength[4] },
+            { width: objectMaxLength[5] },
           ];
           worksheet['!cols'] = wscols;
-          writeFileXLSX(workbook, ` adwdwad.xlsx`, { compression: false });
+          writeFileXLSX(workbook, `Report(Medicines) ${this.startDate} - ${this.endDate}.xlsx`, { compression: false });
           this.spinner.hide();
         },
         error: (err) => {
@@ -169,8 +172,7 @@ export class CoreUIIconsComponent implements OnInit {
   }
 
 
-  viewReport(){
-    alert(this.type)
+  viewReport(){ 
     if(this.type === 'Medicine Stocks Incoming'){
       this.viewReportIncoming()
     }else if(this.type === 'Medicine stocks Outgoing'){
@@ -196,7 +198,9 @@ export class CoreUIIconsComponent implements OnInit {
 
               action: data.action,
               date: data.date ?? '',
-              student: data.student.fullname
+              student: data.student.fullname,
+              email: data.student.email,
+              grade: data.student.grade
             } as any;
           });
           const worksheet = utils.json_to_sheet<any>(this.salesExportExcel);
@@ -205,14 +209,14 @@ export class CoreUIIconsComponent implements OnInit {
           utils.aoa_to_sheet([
             [
               {
-                name: `report.xlsx`,
+                name: `Report(Injuries) ${this.startDate} - ${this.endDate}.xlsx`,
               },
             ],
           ]);
 
           utils.sheet_add_aoa(
             worksheet,
-            [['Description', 'Action', 'Date Admitted','Student']],
+            [['Description', 'Action', 'Date Admitted','Patient','Email','Grade-Year/Personel']],
             { origin: 'A1' }
           );
           let objectMaxLength: any[] = [];
@@ -234,9 +238,11 @@ export class CoreUIIconsComponent implements OnInit {
             { width: objectMaxLength[1] },
             { width: objectMaxLength[2] },
             { width: objectMaxLength[3] },
+            { width: objectMaxLength[4] },
+            { width: objectMaxLength[5] },
           ];
           worksheet['!cols'] = wscols;
-          writeFileXLSX(workbook, ` Report.xlsx`, { compression: false });
+          writeFileXLSX(workbook, `Report(Injuries) ${this.startDate} - ${this.endDate}.xlsx`, { compression: false });
           this.spinner.hide();
         },
         error: (err) => {

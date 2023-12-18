@@ -16,7 +16,7 @@ export class InventoriesService {
   }
 
   findAll() {
-    return this.inventories.find({ relations: ['dosage', 'dosage.stocks','medicinetaken','medicinetaken.dosage'] });
+    return this.inventories.find({ relations: ['dosage', 'dosage.stocks','medicinetaken','medicinetaken.dosage'],where:{deleted: false} });
   }
 
   findOne(id: number) {
@@ -28,6 +28,6 @@ export class InventoriesService {
   }
 
   remove(id: number) {
-    return this.inventories.delete({id});
+    return this.inventories.update({id},{deleted: true});
   }
 }
